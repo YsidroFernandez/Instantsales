@@ -1,0 +1,136 @@
+page-home {
+ 
+    ion-content {
+        background-image: url('../assets/imgs/fondo.png');
+    }
+    
+    .circle-pic{
+        width:50px;
+        height:50px;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+    .header-pic{
+        width:50%;
+        height:auto;
+    }
+    .numbers{
+        font-size: 20px;
+    }
+    
+    .scroll-content  {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .card-md{
+        margin: 0px;
+        width: 100%;
+    }
+
+    .buttonNavbar{
+        background: rgba(255, 255, 255, 0) !important
+    }
+    
+    ion-icon {
+        font-size: 30px; //Preferred size here
+    }
+
+    ion-list{
+        border-color: rgba(0, 0, 0, 0);
+	    background-color: rgba(0, 0, 0, 0);
+    }
+    ion-item{
+        border-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0);
+        padding-top: 8px !important;
+    }
+    ion-avatar{
+        margin: 0px 10px 0px 0px !important;
+    }
+    .description{
+        font-family: 'JennaSue';
+        font-size: 26px;
+        color: dimgrey;
+        margin: 0px 0px 0px 0px;
+        white-space: unset !important;
+    }
+    .username{
+        font-family: 'BwHelder';
+        font-size: 13px;
+    }
+    .btn-cause-image{
+        background-color: white
+    }
+    .btn-operation{
+        width:25px;
+    }
+    .card-content {
+        padding: 0px 0px 0px 15px !important;
+        line-height: 1.0 !important;
+    }
+    .row{
+        padding-left: 15px;
+    }   
+    .row-operations{
+        padding-left: 15px !important;
+        padding-bottom: 18px !important;
+    }
+    .img-cause{
+        padding: 2px 8px 4px 8px !important;
+        width: 2000px !important;
+    }
+
+    .grey-color{
+        color: dimgrey
+    }
+
+
+    @media (min-width: 600px){
+
+        .user-avatar  {     
+            width:100% !important;  
+            height : 100% !important;  
+            max-width: 72px !important;  //any size
+            max-height: 72px !important; //any size 
+        }
+        .circle-pic{
+            width:75px;
+            height:75px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+        .btn-operation{
+            width:40px;
+        }
+        .header-pic{
+            width:50%;
+            height:85px;
+        }
+        .username{
+            font-family: 'BwHelder';
+            font-size: 20px;
+        }
+        .description{
+            font-family: 'JennaSue';
+            font-size: 54px;
+            color: dimgrey;
+        }
+        .card-content {
+            padding: 0px 0px 0px 24px !important;
+            line-height: 1.1 !important;
+        }
+        .row{
+            padding-left: 22px;
+        }   
+        .row-operations{
+            padding-left: 22px !important;
+            padding-bottom: 34px !important;
+        }
+        .img-cause{
+            padding: 6px 16px 10px 16px !important;
+            width: 2000px !important;
+        }
+    }
+    
+    
+}

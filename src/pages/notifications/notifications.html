@@ -1,0 +1,101 @@
+<!--
+  Generated template for the NotificationsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+  <ion-header no-border>
+    <ion-navbar color="white2" text-center>
+      <ion-title> {{'FAVORITES' | translate}} </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content padding>
+  <ion-row *ngIf="many">
+      <ion-col class="col-grid-list" text-center (click)="selectMany('many')"><ion-icon color="green1" name="ios-apps" class="btn-grid-list"></ion-icon></ion-col>
+      <ion-col class="col-grid-list" text-center (click)="selectMany('list')"><ion-icon name="md-list" class="btn-grid-list"></ion-icon></ion-col>
+  </ion-row>
+  <ion-row *ngIf="!many">
+      <ion-col class="col-grid-list" text-center (click)="selectMany('many')"><ion-icon name="ios-apps" class="btn-grid-list"></ion-icon></ion-col>
+      <ion-col class="col-grid-list" text-center (click)="selectMany('list')"><ion-icon color="green1" name="md-list" class="btn-grid-list"></ion-icon></ion-col>
+  </ion-row>
+    
+    <ion-row class="padding" *ngIf="many">
+        <ion-col col-4 *ngFor="let cause of causes">
+            <ion-card card-background-page class="card-cause">
+                <img (click)="goToCause(cause)" src="{{cause.photo}}">          
+            </ion-card>  
+        </ion-col>
+    </ion-row>
+  
+    <ion-row *ngIf="!many">
+        <ion-card *ngFor="let cause of causes">
+            <ion-item>
+                <ion-avatar item-start>
+                  <img class="user-avatar" src="{{cause.userPhoto}}">
+                </ion-avatar>
+              <ion-label class="username">{{cause.username}}</ion-label>
+            </ion-item>
+            <div>
+              <button  class = "btn-cause-image" (click)="goToCause(cause)">
+                <img src="{{cause.photo}}" class="img-cause">
+              </button>
+            </div>          
+            <ion-card-content>
+                <ion-label class="description">{{cause.name}}</ion-label>
+            </ion-card-content>         
+            <ion-row class="row-operations">
+              <ion-col col-1>
+                <img *ngIf="cause.liked" (click)="unlike(i)" class="btn-operation" src="assets/imgs/like-action2.png" alt="">
+                <img *ngIf="!cause.liked" (click)="like(i)" class="btn-operation" src="assets/imgs/button_icon_black.png" alt="">
+              </ion-col>
+              <ion-col col-1>
+                <img *ngIf="!cause.favorited" (click)="addFavorite(i)" class="btn-operation" src="assets/imgs/favorite.png">
+                <img *ngIf="cause.favorited" (click)="deleteFavorite(i)" class="btn-operation" src="assets/imgs/favorite-action.png">
+              </ion-col>
+              <ion-col col-1>
+                <img (click)="openMenuShare(cause.name, cause.photo)" class="btn-operation" src="assets/imgs/share.png">
+              </ion-col>
+            </ion-row>
+            <!--
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="{{cause.userPhoto}}">
+              </ion-avatar>
+              <ion-avatar item-end>
+                <ion-note class="username">
+                  <br>
+                  11 hours ago
+                </ion-note>
+              </ion-avatar>
+                <p class="username">{{cause.username}}</p>
+            </ion-item>
+          
+            <div class="causeImage">
+              <button ion-item (click)="goToCause(cause)">
+                <img src="{{cause.photo}}">
+              </button>
+            </div>          
+            <ion-card-content>
+              <p class="description">{{cause.name}}</p>
+            </ion-card-content>
+          
+            <ion-row>
+              &nbsp;&nbsp;&nbsp;
+                <ion-col col-2>
+                    <img *ngIf="cause.liked" style="width: 25px" src="assets/imgs/like-action.png" alt="">
+                    <img *ngIf="!cause.liked" style="width: 25px" src="assets/imgs/button_icon_black.png" alt="">
+                  </ion-col>
+                  <ion-col col-2>
+                    <img *ngIf="!cause.favorited" style="width: 25px" src="assets/imgs/favorite.png">
+                    <img *ngIf="cause.favorited" style="width: 25px" src="assets/imgs/favorite-action.png">
+                  </ion-col>
+                  <ion-col col-2>
+                    <img style="width: 25px" src="assets/imgs/share.png">
+                  </ion-col>
+            </ion-row>
+          -->
+        </ion-card>
+      
+  </ion-row>
+</ion-content>

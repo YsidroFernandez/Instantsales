@@ -1,0 +1,34 @@
+<!--
+  Generated template for the AceptarFotoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>Cause Photo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center> 
+	 <img class="image-cause" [src]="photo">
+  </div>
+  <br>
+  <br>
+	<ion-grid>
+    <ion-row>
+      <ion-col col-6 text-center>
+        <button ion-button round style="text-transform: none;" color="green1"  (click)="cancelar()">
+        	Cancel
+        </button>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <button ion-button round style="text-transform: none;" color="green1" (click)="aceptar()" >
+        	Accept
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

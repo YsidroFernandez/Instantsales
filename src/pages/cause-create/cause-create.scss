@@ -1,0 +1,37 @@
+page-cause-create {
+
+    ion-card {
+    position: relative;
+    text-align: center;
+    }
+
+    ion-list{
+        border-color: rgba(0, 0, 0, 0);
+	    background-color: rgba(0, 0, 0, 0);
+    }
+    ion-item{
+        border-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+    }
+
+    .item-md {
+        background: transparent;
+        color : white;
+    }
+
+    .image{
+        width: 40%;
+    }
+    
+    .text-inputs{
+        font-size: 14px;
+    }
+    ion-icon {
+        font-size: 30px; //Preferred size here
+    }
+    .photo{
+        width: 40%;
+    }
+   
+    
+}

@@ -1,0 +1,136 @@
+page-edit-profile {
+    ion-content {
+        background-image: url('../assets/imgs/fondo.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .circle-pic{
+        width:35%;
+        height:35%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+    ion-list{
+        border-color: rgba(0, 0, 0, 0);
+	    background-color: rgba(0, 0, 0, 0);
+    }
+    ion-item{
+        border-color: rgba(0, 0, 0, 0);
+	    background-color: rgba(0, 0, 0, 0);
+    }
+    ion-input, ion-textarea, ion-select, ion-datetime{
+        color: gray !important;
+    }
+    ion-label{
+        color: black !important;
+    }
+    .item-md {
+        background: transparent;
+        color : white;
+        width: 75% !important;
+        padding: 0px !important;
+        margin-left: 12.5% !important;
+        font-size: 14px !important;
+    }
+    .image{
+        width: 40%;
+    }
+    .text-inputs{
+        //font-size: 14px;        
+    }
+    .label-select{
+        font-size: 14px !important;        
+    }
+    .btn-update{
+        margin: 10px 0px; 
+        text-transform: none;
+        font-size: 14px;
+    }
+
+    .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner{
+        border-bottom-color: dimgray !important;
+        box-shadow: inset 0 -1px 0 0 grey !important;
+    }
+    
+    .item-md.item-input.item-has-focus .item-inner, .item-md.item-input.input-has-focus .item-inner{
+        border-bottom-color: #AA076B !important;
+        box-shadow: inset 0 -1px 0 0 indigo !important;
+    }
+
+    .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border-bottom-color: dimgray !important;
+        box-shadow: inset 0 -1px 0 0 grey !important;
+    }
+
+    .list-md .item-block .item-inner {
+        border-bottom-color: dimgray !important;
+        box-shadow: inset 0 -1px 0 0 grey !important;
+    }
+ 
+    ion-icon {
+        font-size: 30px; //Preferred size here
+    }
+    .invalid {
+        border: 1px solid #fdfdfd;
+    }
+    p{
+        color: #61045f;
+    }
+    .text-inputs{
+        font-size: 20px;
+    }
+    .check-profile{
+        font-size: 13px;        
+    }
+    .div-check-profile{
+        margin: 2% 12% 0% 12%;
+    }
+    .check {
+        .icon {
+          font-size: 25px !important;
+        }
+    }
+
+    @media (min-width: 600px){
+        .checkbox-md .checkbox-icon{
+            width: 25px !important;
+            height: 25px !important;                
+        }
+        .check-profile{
+            font-size: 22px;        
+        }
+        .div-check-profile{
+            margin: 3% 15% 0% 15%;
+        }
+        .text-inputs{
+            font-size: 24px;
+            margin-top: 2% !important;
+        }
+        .circle-pic{
+            width:25%;
+            height:25%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            margin-top: 15px;
+        }
+        .item-md {
+            background: transparent;
+            color : white;
+            width: 70% !important;
+            padding: 0px !important;
+            margin-left: 15% !important;
+            font-size: 22px !important;
+        }
+        .label-select{
+            font-size: 22px !important;        
+        }
+        .btn-update{
+            margin: 0px 0px; 
+            text-transform: none;
+            font-size: 22px;
+            height: 50px;
+        }
+    }
+}
+

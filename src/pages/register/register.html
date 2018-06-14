@@ -1,0 +1,71 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content padding>
+
+    <div text-center>
+        <img class="image" src="assets/imgs/logo-login.png" alt="">
+    </div>
+    <form [formGroup]="loginForm">
+        <ion-list>
+
+
+            <ion-item class="text-inputs">
+              <ion-label floating>{{'USERNAME' | translate }}</ion-label>
+              <ion-input formControlName="username" type="text" value="" ></ion-input>
+            </ion-item>
+            <p *ngIf="!loginForm.controls.username.valid && (loginForm.controls.username.dirty || submitAttempt) && !(loginForm.get('username').errors && loginForm.get('username').errors.usernameTaken)" text-color="white">{{'VALIDATE_USERNAME' | translate }}</p> 
+            <p *ngIf="loginForm.get('username').errors && loginForm.get('username').errors.usernameTaken" text-color="white">{{'VALIDATE_USERNAME_TAKEN' | translate }}</p>
+
+            <ion-item class="text-inputs">
+              <ion-label floating>{{'PASSWORD' | translate }}</ion-label>
+              <ion-input formControlName="password" type="password" value="" clearOnEdit="false" #passwordInput ></ion-input>
+              <button ion-button clear item-end (click)='showHide()' class="button-eye">
+                <ion-icon #buttonShowPass name="eye" [color]="colorEye" ></ion-icon>
+              </button>
+            </ion-item>
+
+            <p *ngIf="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || submitAttempt)" text-color="white">{{'VALIDATE_PASSWORD' | translate }}</p>
+            
+             <ion-item class="text-inputs">
+              <ion-label floating>{{'PASSWORD_CONFIRM' | translate }}</ion-label>
+              <ion-input formControlName="passwordconfirm" type="password" value="" clearOnEdit="false" #passwordInput2 ></ion-input>
+              <button ion-button clear item-end (click)='showHide2()' class="button-eye">
+                <ion-icon #buttonShowPass name="eye" [color]="colorEye" ></ion-icon>
+              </button>
+            </ion-item>
+
+            <p *ngIf="!loginForm.controls.passwordconfirm.valid && (loginForm.controls.passwordconfirm.dirty || submitAttempt)  " text-color="white">{{'VALIDATE_PASSWORD' | translate }}</p>
+             
+      <p *ngIf="loginForm.controls.passwordconfirm.valid && loginForm.hasError('mismatchedPasswords') &&  submitAttempt" text-color="white">{{'VALIDATE_CONFIRM_PASSWORD' | translate }}</p>
+
+            <ion-item class="text-inputs">
+              <ion-label floating>{{'EMAIL' | translate }}</ion-label>
+              <ion-input formControlName="email" type="email" ></ion-input>
+            </ion-item>
+             <p *ngIf="!loginForm.controls.email.valid &&  submitAttempt" text-color="white">{{'VALIDATE_EMAIL' | translate }}</p>
+
+            <p *ngIf="loginForm.get('email').errors && loginForm.get('email').errors.emailTaken" text-color="white">{{'VALIDATE_EMAIL_TAKEN' | translate }}</p>
+            
+ 
+
+            <ion-item class="text-inputs">
+              <ion-label floating>{{'NAME' | translate }}</ion-label>
+              <ion-input formControlName="name" type="text" ></ion-input>
+            </ion-item>
+            <p *ngIf="!loginForm.controls.name.valid && (loginForm.controls.name.dirty || submitAttempt)" text-color="white">{{'VALIDATE_NAME' | translate }}</p>
+            <br>
+           
+          </ion-list>
+
+    </form>
+  
+  <div text-center>
+      <button color="white" class="button-signin" ion-button round (click)="doRegister()">{{'SIGNUP' | translate}}</button>
+  </div>
+  <div text-center (click)="goToLogin()">
+  	<p class="labels-varios" style="text-align: center;" >{{'HAVEACCOUNT' | translate}} <a ion-text style="color: white" >{{'LOGIN' | translate}}</a></p>
+  </div>
+        
+</ion-content>

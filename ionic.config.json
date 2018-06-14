@@ -1,0 +1,15 @@
+{
+  "name": "instaCause",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+  	{
+      "path": "/intranet",
+      "proxyUrl": "http://209.156.175.205/nucli/api/"
+
+    }
+  ]
+}

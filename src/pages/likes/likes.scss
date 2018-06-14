@@ -1,0 +1,52 @@
+page-likes {
+    .circle-pic{
+        width:65%;
+        height:65%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+
+    .username{
+        margin: 0px 0px 0px 0px;
+        font-size: 11px;
+        color: dimgrey;
+    }
+    .message{
+        font-size: 11px;
+        color: #585757;
+    }
+    ion-content {
+        background-image: url('../assets/imgs/fondo.png');
+    }
+    .image-cause{
+        border-radius: 3% !important;
+        overflow: hidden;
+        width:100% !important;  
+        height : 100% !important;  
+        max-width: 37px !important;  //any size
+        max-height: 37px !important; //any size 
+    }
+
+    @media (min-width: 600px){
+        .username{
+            margin: 0px 0px 0px 0px;
+            font-size: 23px;
+            color: #585757;
+        }
+        .image-cause{
+            border-radius: 3% !important;
+            overflow: hidden;
+            width:100% !important;  
+            height : 100% !important;  
+            max-width: 73px !important;  //any size
+            max-height: 73px !important; //any size 
+        }
+        .circle-pic{
+            width:60%;
+            height:60%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+    }
+    
+}

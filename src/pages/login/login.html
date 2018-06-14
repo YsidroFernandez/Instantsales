@@ -1,0 +1,61 @@
+<ion-content >  
+  <div>
+    <ion-row align-items-center class="row-lang">
+      <ion-col col-8 text-right>
+          <ion-label class="lab-login">{{'CHOOSE' | translate }}</ion-label>
+      </ion-col>
+      <ion-col col-4>
+          <ion-select (ionChange)="choose($event)" class="select-lang">
+            <ion-option  *ngFor="let item of idioms" [value]="item.value">
+               {{ item.label }}
+            </ion-option>
+          </ion-select>
+      </ion-col>  
+    </ion-row>
+  </div>
+  <br>  
+  <br>
+  <div text-center>
+    <img class="image" src="assets/imgs/logo-login.png" alt=""> 
+  </div>
+  <div>   
+      <ion-item class="text-inputs">
+          <ion-label floating><img style="width: 25px" src="assets/imgs/username-icon.png" alt=""> &nbsp;&nbsp;{{'USERNAME' | translate }}</ion-label>
+          <ion-input [(ngModel)]="username" type="text" value="" ></ion-input>
+        </ion-item>
+        <ion-item class="text-inputs">
+            <ion-label floating><img style="width: 25px" src="assets/imgs/password-icon.png" alt=""> &nbsp;&nbsp;{{'PASSWORD' | translate }}</ion-label>
+            <ion-input [(ngModel)]="password" type="password" value="" #passwordInput></ion-input>
+            <button ion-button clear item-end (click)='showHide()' class="button-eye">
+              <ion-icon #buttonShowPass name="eye" [color]="colorEye" ></ion-icon>
+            </button>
+        </ion-item>
+  </div>
+  <br> 
+    <br>
+    <div text-center>
+        <button color="white" class="button-signin" ion-button round (click)="doLogin()">{{'LOGIN' | translate }}</button>
+    </div>
+    <br>
+    <div text-center>
+      <ion-row>
+        <ion-col>
+          <span class="labels-varios">{{'FORGOT' | translate }}</span> 
+        </ion-col>
+        <ion-col>
+          <span class="labels-varios" (click)="goToRegister()">{{'DONTHAVEACCOUNT' | translate }}&nbsp;{{'SIGNUP' | translate }}</span>
+        </ion-col>
+      </ion-row>
+
+    </div>
+    <br>
+    <div text-center>
+      <span class="labels-varios"> {{'LOGINWITH' | translate }}</span>
+      <br>
+      <ion-row>
+        <br>
+        <ion-col><img (click)="loginFacebook()" style="width: 8%; margin-top: 1%" src="assets/imgs/facebook-login-icon.png" alt=""></ion-col>
+      </ion-row>
+
+    </div> 
+</ion-content>

@@ -1,0 +1,51 @@
+<!--
+  Generated template for the CauseCreatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border style="background-color:#fff;">
+  <ion-navbar color="white2">
+    <ion-title text-center>{{'CREATEACAUSE' | translate }}</ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="icons" color="dark">
+    <ion-segment-button value="camera" (click)="accessCamera()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="md-photos" (click)="accessGallery()" >
+      <ion-icon name="md-photos"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+  <ion-content class="background-color-transparent">
+<div [ngSwitch]="icons">
+  <div *ngSwitchCase="'camera'">
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 text-left>
+            <button ion-button icon-only (click)="changeCamera()" clear>
+              <ion-icon name="sync" style="font-size:40px"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-6 text-right>
+            <button ion-button icon-only (click)="setFlash()" clear>
+              <ion-icon name="{{iconFlash()}}" style="font-size:40px"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    <div style="position: absolute; bottom: 0px; left: 0px; right: 0px; background: #fff;" id="id">
+    </div>
+    <div text-center style="position: absolute; bottom: 40px; left: 0px; right: 0px; ">
+      <img  (click)="takePhoto()" style="width: 50px;" src="assets/imgs/button_take_photo.png" alt="">
+    </div>
+  </div>
+  <div *ngSwitchCase="'md-photos'" >
+ <ion-card>
+ <img class="full-image" [src]="base64Image" *ngIf="base64Image" />
+</ion-card>
+  </div>
+</div>
+</ion-content>

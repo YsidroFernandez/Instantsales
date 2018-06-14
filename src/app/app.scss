@@ -1,0 +1,229 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+@font-face{
+    font-family: 'lovely';
+    src: local('Lovely-Home'),local('Lovely-Home'), url('../assets/fonts/lovely-home.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'harabara';
+    src: local('Harabara'),local('Harabara'), url('../assets/fonts/Harabara-Mais.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'ananda';
+    src: local('Ananda'),local('Ananda'), url('../assets/ananda.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'gabrielle';
+    src: local('Gabrielle'),local('Gabrielle'), url('../assets/Gabrielle.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'OptimalSolutions';
+    src: local('OptimalSolutions'),local('OptimalSolutions'), url('../assets/OptimalSolutions.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'BwHelder';
+  src: url('../assets/fonts/BwHelder.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'BwHelder';
+}
+
+@font-face {
+  font-family: 'JennaSue';
+  src: url('../assets/fonts/JennaSue.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.tabbar, .tabs-ios, .tabs-md , .tabs-wp{
+    .tab-button-icon {
+        background-repeat:no-repeat;
+        background-position:center;
+        height:24px;
+        width:24px;
+        background-size:contain;
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        &:before {
+            display:none;
+        }
+    }
+}
+
+.tabs-ios {
+  a[aria-selected=false]{
+     .tab-button-icon[ng-reflect-name=categories], .tab-button-icon[aria-label="categories"] {
+      background-image: url(../assets/img/categories_inactive.png);
+    }
+    .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+      background-image: url(../assets/img/explore_inactive.png);
+    }
+    .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=hot] {
+      background-image: url(../assets/img/hot_inactive.png);
+    }
+  }
+ a[aria-selected=true] {
+   //führ eventuellen text
+   //span {
+      //color: #f00; //whatever colour you want to use for the text
+    //}
+    .tab-button-icon[ng-reflect-name=categories], .tab-button-icon[aria-label=categories] {
+      background-image: url(../assets/img/categories_active.png);
+    }
+    .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+      background-image: url(../assets/img/explore_active.png);
+    }
+    .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=hot] {
+      background-image: url(../assets/img/hot_active.png);
+    }
+  }
+}
+
+.tabs-md {
+  a[aria-selected=false]{
+    
+    .tab-button-icon[ng-reflect-name=ic_home], .tab-button-icon[aria-label=ic_home] {
+      background-image: url(../assets/imgs/home.png);
+    }
+    .tab-button-icon[ng-reflect-name=ic_search], .tab-button-icon[aria-label=ic_search] {
+        background-image: url(../assets/imgs/search.png);
+    }
+    .tab-button-icon[ng-reflect-name=ic_camera], .tab-button-icon[aria-label=ic_camera] {
+      background-image: url(../assets/imgs/photo.png);
+    }
+    .tab-button-icon[ng-reflect-name=ic_bookmarks], .tab-button-icon[aria-label=ic_bookmarks] {
+        background-image: url(../assets/imgs/bookmarks.png);
+		}
+		.tab-button-icon[ng-reflect-name=ic_notification], .tab-button-icon[aria-label=ic_notification] {
+			background-image: url(../assets/imgs/notification.png);
+    }
+    .tab-button-icon[ng-reflect-name=ic_notification_action], .tab-button-icon[aria-label=ic_notification_action] {
+			background-image: url(../assets/imgs/notification-action.png);
+		}
+  }
+
+ a[aria-selected=true] {
+   //führ eventuellen text
+   //span {
+      //color: #f00; //whatever colour you want to use for the text
+    //}
+		.tab-button-icon[ng-reflect-name=ic_home], .tab-button-icon[aria-label=ic_home] {
+			background-image: url(../assets/imgs/home.png);
+		}
+		.tab-button-icon[ng-reflect-name=ic_search], .tab-button-icon[aria-label=ic_search] {
+				background-image: url(../assets/imgs/search.png);
+		}
+		.tab-button-icon[ng-reflect-name=ic_camera], .tab-button-icon[aria-label=ic_camera] {
+			background-image: url(../assets/imgs/photo.png);
+		}
+		.tab-button-icon[ng-reflect-name=ic_bookmarks], .tab-button-icon[aria-label=ic_bookmarks] {
+				background-image: url(../assets/imgs/bookmarks.png);
+		}
+		.tab-button-icon[ng-reflect-name=ic_notification], .tab-button-icon[aria-label=ic_notification] {
+			background-image: url(../assets/imgs/notification.png);
+    }
+    .tab-button-icon[ng-reflect-name=ic_notification_action], .tab-button-icon[aria-label=ic_notification_action] {
+			background-image: url(../assets/imgs/notification-action.png);
+		}
+
+  }
+}
+
+.tabs-wp {
+  a[aria-selected=false]{
+     .tab-button-icon[ng-reflect-name=categories], .tab-button-icon[aria-label="categories"] {
+      background-image: url(../assets/img/categories_inactive.png);
+    }
+    .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+      background-image: url(../assets/img/explore_inactive.png);
+    }
+    .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=hot] {
+      background-image: url(../assets/img/hot_inactive.png);
+    }
+  }
+
+ a[aria-selected=true] {
+   //führ eventuellen text
+   //span {
+      //color: #f00; //whatever colour you want to use for the text
+    //}
+    .tab-button-icon[ng-reflect-name=categories], .tab-button-icon[aria-label=categories] {
+      background-image: url(../assets/img/categories_active.png);
+    }
+    .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+      background-image: url(../assets/img/explore_active.png);
+    }
+    .tab-button-icon[ng-reflect-name=hot], .tab-button-icon[aria-label=hot] {
+      background-image: url(../assets/img/hot_active.png);
+    }  
+  }
+}
+
+.col-grid-list{
+  padding: 12px 0px !important;
+}
+.btn-grid-list{        
+  font-size: 24px !important;
+}
+
+@media (min-width: 600px){
+  .toolbar{
+      min-height: 70px !important;
+      font-size: 25px !important;
+   }
+  .toolbar-title{
+      font-size: 25px !important;
+  } 
+  .col-grid-list{
+    padding: 25px 0px !important;
+  }
+  .btn-grid-list{        
+      font-size: 40px !important;
+  }
+
+}
+
+::-webkit-scrollbar{
+  display:none;
+}
+
+.social-share-color {
+  color: #AA076B !important;
+  ion-icon{
+      color: #AA076B !important;
+  }
+}
