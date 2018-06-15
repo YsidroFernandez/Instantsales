@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ViewController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { CauseProvider } from '../../providers/cause/cause';
+import { publicationProvider } from '../../providers/publication/publication';
 import { UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
@@ -10,10 +10,10 @@ import { Camera } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
-  selector: 'page-cause-create',
-  templateUrl: 'cause-create.html',
+  selector: 'page-publication-create',
+  templateUrl: 'publication-create.html',
 })
-export class CauseCreatePage {
+export class publicationCreatePage {
 
    base64Image:any;
 
@@ -58,7 +58,7 @@ export class CauseCreatePage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public viewCtrl: ViewController,
-              public causeProvider: CauseProvider,
+              public publicationProvider: publicationProvider,
               public userProvider: UserProvider,
               public storage: Storage,
               private alertCtrl: AlertController,
@@ -111,7 +111,7 @@ export class CauseCreatePage {
               0, 0,                               
               image.width, image.height);
           let cropped_img_base64 = canvas.toDataURL();
-          this.navCtrl.push('CauseRegisterPage',{photo: cropped_img_base64},
+          this.navCtrl.push('publicationRegisterPage',{photo: cropped_img_base64},
           {animate: true, direction: 'forward'});
         }
       }, error => alert(error));
@@ -142,7 +142,7 @@ export class CauseCreatePage {
 
   presentAlert() {
     let alert = this.alertCtrl.create({
-      title: 'Created Cause',
+      title: 'Created publication',
       buttons: ['Ok']
     });
     alert.present();

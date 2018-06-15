@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Events } from 'ionic-angular';
-import { CauseProvider } from '../../providers/cause/cause';
+import { publicationProvider } from '../../providers/publication/publication';
 import { UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
 
@@ -22,12 +22,12 @@ import { AlertController } from 'ionic-angular';
 })
 export class HomePage {
 
-  causes: any;
+  publications: any;
   user:any;
   public loader: any;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public causeProvider: CauseProvider,
+              public publicationProvider: publicationProvider,
               public userProvider: UserProvider,
               public events: Events,
               public storage: Storage,
@@ -38,20 +38,20 @@ export class HomePage {
               public actionsheetCtrl: ActionSheetController,
               public alertCtrl: AlertController) {
 
-    this.causes=[];
+    this.publications=[];
     this.user=[];
     this.loader = this.loadingCtrl.create({
       content: 'Loading...'
     });
   }
 
-   updateCause() {
+   updatepublication() {
     this.navCtrl.push('UpdateProfilePage',
     {animate: true, direction: 'forward'});
   }
 
-  goToCause(cause:any){
-    this.navCtrl.push('CauseRegisterPage',{cause : cause },
+  goTopublication(publication:any){
+    this.navCtrl.push('publicationRegisterPage',{publication : publication },
         {animate: true, direction: 'forward'});
   }
 
@@ -64,10 +64,10 @@ export class HomePage {
         this.user = par;
         console.log(this.user);
         console.log(this.user.idString);
-        this.causeProvider.getCauses(this.user.idString)
+        this.publicationProvider.getpublications(this.user.idString)
         .then((result) => {
           console.log(result);
-          this.causes= result['items'];
+          this.publications= result['items'];
           //this.loader.dismiss();
         }, (err) => {
           console.log(err);
@@ -88,13 +88,13 @@ export class HomePage {
 
   like(i){
     var like = {"userId": this.user.idString,
-                "causeId": this.causes[i].idString,
-                "userCauseId": this.causes[i].userId,
+                "publicationId": this.publications[i].idString,
+                "userpublicationId": this.publications[i].userId,
                 "viewed": false};
-    this.causeProvider.addLike(like)
+    this.publicationProvider.addLike(like)
     .then((result) => {
       console.log(result);
-      this.causes[i].liked = true;  
+      this.publications[i].liked = true;  
     }, (err) => {
       console.log(err);
     });
@@ -102,11 +102,11 @@ export class HomePage {
   }
   unlike(i){
     var like = {"userId": this.user.idString,
-                "causeId": this.causes[i].idString};
-    this.causeProvider.unlike(like)
+                "publicationId": this.publications[i].idString};
+    this.publicationProvider.unlike(like)
     .then((result) => {
       console.log(result);
-      this.causes[i].liked = false;  
+      this.publications[i].liked = false;  
     }, (err) => {
       console.log(err);
     });
@@ -114,11 +114,11 @@ export class HomePage {
 
   addFavorite(i){
     var favorite = {"userId": this.user.idString,
-                "causeId": this.causes[i].idString};
-    this.causeProvider.addFavorite(favorite)
+                "publicationId": this.publications[i].idString};
+    this.publicationProvider.addFavorite(favorite)
     .then((result) => {
       console.log(result);
-      this.causes[i].favorited = true;  
+      this.publications[i].favorited = true;  
     }, (err) => {
       console.log(err);
     });
@@ -126,11 +126,11 @@ export class HomePage {
 
   deleteFavorite(i){
     var favorite = {"userId": this.user.idString,
-                "causeId": this.causes[i].idString};
-    this.causeProvider.deleteFavorite(favorite)
+                "publicationId": this.publications[i].idString};
+    this.publicationProvider.deleteFavorite(favorite)
     .then((result) => {
       console.log(result);
-      this.causes[i].favorited = false;  
+      this.publications[i].favorited = false;  
     }, (err) => {
       console.log(err);
     });
@@ -145,10 +145,10 @@ export class HomePage {
         this.user = par;
         console.log(this.user);
         console.log(this.user.idString);
-        this.causeProvider.getCauses(this.user.idString)
+        this.publicationProvider.getpublications(this.user.idString)
         .then((result) => {
           console.log(result);
-          this.causes= result['items'];
+          this.publications= result['items'];
           
         }, (err) => {
           console.log(err);
@@ -213,7 +213,7 @@ instagramShare(des:string, img: string){
  
 }
 saveShare(img: string){
-  /*this.photoLibrary.saveImage(img,"InstantCause", null).then(() => {
+  /*this.photoLibrary.saveImage(img,"Instantpublication", null).then(() => {
     // saving
     }).catch((error) => {
         this.showAlert();

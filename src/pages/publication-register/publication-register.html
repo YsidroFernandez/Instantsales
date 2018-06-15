@@ -2,29 +2,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title text-center>Cause</ion-title>
+    <ion-title text-center>publication</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
   <div text-center>
-    <img class="image image-cause" [src]="photo" alt="">
+    <img class="image image-publication" [src]="photo" alt="">
   </div> 
        
-  <form [formGroup]="causeForm">
+  <form [formGroup]="publicationForm">
     <ion-list>
       <ion-item class="text-inputs">
         <ion-label floating>Name</ion-label>
-        <ion-input type="text" formControlName="name" [disabled]="disabled" [class.invalid]="!causeForm.controls.name.valid && (causeForm.controls.name.dirty || submitAttempt)" maxlength=40></ion-input>
+        <ion-input type="text" formControlName="name" [disabled]="disabled" [class.invalid]="!publicationForm.controls.name.valid && (publicationForm.controls.name.dirty || submitAttempt)" maxlength=40></ion-input>
       </ion-item>
-      <p *ngIf="!causeForm.controls.name.valid && (causeForm.controls.name.dirty || submitAttempt)" text-color="white">{{'VALIDATE_NAME' | translate }}
+      <p *ngIf="!publicationForm.controls.name.valid && (publicationForm.controls.name.dirty || submitAttempt)" text-color="white">{{'VALIDATE_NAME' | translate }}
       </p>  
       <ion-item class="text-inputs">
         <ion-label floating>Description</ion-label>
-        <ion-textarea formControlName="description" [disabled]="disabled" maxlength=200 [class.invalid]="!causeForm.controls.description.valid && (causeForm.controls.description.dirty || submitAttempt)"></ion-textarea>
+        <ion-textarea formControlName="description" [disabled]="disabled" maxlength=200 [class.invalid]="!publicationForm.controls.description.valid && (publicationForm.controls.description.dirty || submitAttempt)"></ion-textarea>
       </ion-item>
-      <p *ngIf="!causeForm.controls.description.valid && (causeForm.controls.description.dirty || submitAttempt)" text-color="white">{{'VALIDATE_NAME' | translate }}
+      <p *ngIf="!publicationForm.controls.description.valid && (publicationForm.controls.description.dirty || submitAttempt)" text-color="white">{{'VALIDATE_NAME' | translate }}
       </p>
-      <ion-item *ngIf="cause.photo" class="text-inputs">
+      <ion-item *ngIf="publication.photo" class="text-inputs">
         <ion-label floating>Username</ion-label>
         <ion-input type="text" (click)="goProfileUser()" formControlName="username" [disabled]="disabled"></ion-input>
       </ion-item> 
@@ -36,28 +36,28 @@
         <ion-label floating>Contact</ion-label>
         <ion-input type="text"  formControlName="contact" [disabled]="disabled" maxlength=50></ion-input>
       </ion-item>
-      <ion-item *ngIf="cause.photo" class="text-inputs">
+      <ion-item *ngIf="publication.photo" class="text-inputs">
         <ion-label floating>Creation date</ion-label>
         <ion-input type="text"  formControlName="creationDate" [disabled]="disabled"></ion-input>
       </ion-item>
       <br>
     </ion-list>  
     </form>
-    <div *ngIf="!cause.photo">
+    <div *ngIf="!publication.photo">
       <ion-grid>
         <ion-row>
           <ion-col col-6 text-center>
             <button ion-button round outline class="btn-operation" color="green1" (click)="cancelar()">Cancelar</button>
           </ion-col>
           <ion-col col-6 text-center>
-            <button ion-button round outline class="btn-operation" color="green1" (click)="saveCause()">Create</button>
+            <button ion-button round outline class="btn-operation" color="green1" (click)="savepublication()">Create</button>
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
     <div ng-else>
       <div text-center>
-        <button text-center  *ngIf="cause.photo" class="btn-operation" outline ion-button round color="green1" (click)="goBack()">Volver</button>
+        <button text-center  *ngIf="publication.photo" class="btn-operation" outline ion-button round color="green1" (click)="goBack()">Volver</button>
       </div>
     </div>
 </ion-content>

@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CauseCreatePage } from './cause-create';
+import { publicationRegisterPage } from './publication-register';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
-    CauseCreatePage,
+    publicationRegisterPage,
   ],
   imports: [
-    IonicPageModule.forChild(CauseCreatePage),
+    IonicPageModule.forChild(publicationRegisterPage),
     TranslateModule,
   ],
   exports: [
-    CauseCreatePage
+    publicationRegisterPage
   ]
 })
-export class CauseCreatePageModule {}
+export class publicationRegisterPageModule {}
+
+

@@ -2,35 +2,35 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
-import { CauseProvider } from '../../providers/cause/cause';
+import { publicationProvider } from '../../providers/publication/publication';
 import { UserProvider } from '../../providers/user/user';
 //import {TranslateService} from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
-  selector: 'page-cause-register',
-  templateUrl: 'cause-register.html'
+  selector: 'page-publication-register',
+  templateUrl: 'publication-register.html'
 })
-export class CauseRegisterPage {
-	public cause: any = [];
+export class publicationRegisterPage {
+	public publication: any = [];
 	disabled: boolean = false;
 	private submitAttempt: boolean = false;
 	photo: string; 
-  causeForm: FormGroup;
+  publicationForm: FormGroup;
   public loader: any;
 
   constructor(public navCtrl: NavController,
   			 public navParams: NavParams,
   			 public formBuilder: FormBuilder,
   			 private storage: Storage,
-  			 public causeProvider: CauseProvider,
+  			 public publicationProvider: publicationProvider,
   			 public userProvider: UserProvider,
          private loadingCtrl: LoadingController){
     this.loader = this.loadingCtrl.create({
                 content: 'Please wait...'
               });
   	this.photo = this.navParams.get('photo');
-  	this.causeForm = formBuilder.group({
+  	this.publicationForm = formBuilder.group({
 	      name: ['', Validators.compose([Validators.maxLength(40), Validators.pattern('[a-zA-Z0-9_. ]*'), Validators.required])],
 	      description: ['', Validators.compose([Validators.maxLength(200), Validators.pattern('[a-zA-Z0-9_. ]*'), Validators.required])],
 	      location: [''],
@@ -39,35 +39,35 @@ export class CauseRegisterPage {
         username: [''],
 	  });
     
-    if(this.navParams.get('cause')){
-        this.cause = this.navParams.get('cause');
+    if(this.navParams.get('publication')){
+        this.publication = this.navParams.get('publication');
         this.disabled = true;
-        this.photo = this.cause.photo;
-        this.causeForm.get('name').setValue(this.cause.name);
-        this.causeForm.get('description').setValue(this.cause.description);
-        this.causeForm.get('location').setValue(this.cause.location);
-        this.causeForm.get('contact').setValue(this.cause.contact);
-        this.causeForm.get('creationDate').setValue(this.cause.creationDate);
-        this.causeForm.get('username').setValue(this.cause.username);
+        this.photo = this.publication.photo;
+        this.publicationForm.get('name').setValue(this.publication.name);
+        this.publicationForm.get('description').setValue(this.publication.description);
+        this.publicationForm.get('location').setValue(this.publication.location);
+        this.publicationForm.get('contact').setValue(this.publication.contact);
+        this.publicationForm.get('creationDate').setValue(this.publication.creationDate);
+        this.publicationForm.get('username').setValue(this.publication.username);
       }
   }
 
-  saveCause(){
+  savepublication(){
   	this.submitAttempt=true;
     this.storage.get('user').then((val) => {
       if(val){
         let par = JSON.parse(val);
-        console.log(this.causeForm.valid);
-        console.log(this.causeForm.value);
-        if(this.causeForm.valid){
+        console.log(this.publicationForm.valid);
+        console.log(this.publicationForm.value);
+        if(this.publicationForm.valid){
           this.loader.present();
 
-	        let cause = {...this.causeForm.value,
+	        let publication = {...this.publicationForm.value,
           			       "userId": par.idString,
                        "username": par.username,
                        "useremail": par.email,
                        "photo": this.photo};
-	        this.causeProvider.addCause(cause)
+	        this.publicationProvider.addpublication(publication)
 	        .then((result) => {
 	          alert(result);
 	          this.userProvider.getUser(par.idString,par.idString).then((res)=>{
@@ -76,7 +76,7 @@ export class CauseRegisterPage {
               this.loader.dismiss();
               this.navCtrl.parent.select(0);
 	          },(err)=>alert("getUser"+err));
-	        }, (err)=>alert("addCause"+err));
+	        }, (err)=>alert("addpublication"+err));
     		}
   		}
   	}, (err)=>alert("storage"+err));
@@ -91,7 +91,7 @@ export class CauseRegisterPage {
   }
 
   goProfileUser(){
-    this.navCtrl.push('ProfilePage',{userId: this.cause.userId},
+    this.navCtrl.push('ProfilePage',{userId: this.publication.userId},
     {animate: true, direction: 'forward'});
   }
 

@@ -16,7 +16,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UserProvider } from '../providers/user/user';
-import { CauseProvider } from '../providers/cause/cause';
+import { publicationProvider } from '../providers/publication/publication';
 import { SettingPage } from '../pages/setting/setting';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -55,7 +55,7 @@ export function createTranslateLoader(http: HttpClient) {
     Crop,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    CauseProvider,
+    publicationProvider,
     SocialSharing,
     Facebook
   ],

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { CauseProvider } from '../../providers/cause/cause';
+import { publicationProvider } from '../../providers/publication/publication';
 import { UserProvider } from '../../providers/user/user';
 import { SettingPage } from '../setting/setting';
 /**
@@ -18,7 +18,7 @@ import { SettingPage } from '../setting/setting';
 })
 export class ProfilePage {
 
-  causes: any;
+  publications: any;
   many: boolean;
   user: any;
   userId: string;
@@ -27,12 +27,12 @@ export class ProfilePage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public storage: Storage,
-              public causeProvider: CauseProvider,
+              public publicationProvider: publicationProvider,
               public userProvider: UserProvider,
               public popoverCtrl: PopoverController,
               public events: Events
               ) {
-    this.causes = [];
+    this.publications = [];
     this.ownProfile = true;
     this.many = true;
     this.user = [];
@@ -66,10 +66,10 @@ export class ProfilePage {
               this.user= result['items'];
               this.ownProfile = true;
               console.log(this.user);
-              this.causeProvider.getCausesUser(this.user.idString)
+              this.publicationProvider.getpublicationsUser(this.user.idString)
                 .then((result) => {
                   console.log(result);
-                  this.causes= result['items'];
+                  this.publications= result['items'];
                 }, (err) => {
                   console.log(err);
               });
@@ -84,10 +84,10 @@ export class ProfilePage {
               this.user= result['items'];
               this.ownProfile = false;
               console.log(this.user);
-              this.causeProvider.getCausesUser(this.user.idString)
+              this.publicationProvider.getpublicationsUser(this.user.idString)
                 .then((result) => {
                   console.log(result);
-                  this.causes= result['items'];
+                  this.publications= result['items'];
                 }, (err) => {
                   console.log(err);
               });
@@ -148,9 +148,9 @@ export class ProfilePage {
       });
   }
 
-  goToCause(cause:any){
-    cause = {...cause, userPhoto: this.user.profilePicture};
-    this.navCtrl.push('CauseRegisterPage',{cause : cause },
+  goTopublication(publication:any){
+    publication = {...publication, userPhoto: this.user.profilePicture};
+    this.navCtrl.push('publicationRegisterPage',{publication : publication },
         {animate: true, direction: 'forward'});
   }
 

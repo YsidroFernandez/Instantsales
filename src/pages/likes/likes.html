@@ -1,6 +1,6 @@
 <!--
   Generated template for the FollowersPage page.
-
+publication
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -16,11 +16,11 @@
       <img class="circle-pic" src="{{like.profilePicture}}">
     </ion-col>
     <ion-col col-8 (click)="goProfileUser(like.userId)">
-      <ion-label class="username" style="color:dimgray"><font style="color: black">@{{like.username}}</font> likes your cause</ion-label>
+      <ion-label class="username" style="color:dimgray"><font style="color: black">@{{like.username}}</font> likes your publication</ion-label>
     </ion-col>
     <ion-col col-2 text-center>
-      <ion-thumbnail (click)="getCauseById(like.causeId)" >
-        <img class="image-cause" src="{{like.causePhoto}}">
+      <ion-thumbnail (click)="getpublicationById(like.publicationId)" >
+        <img class="image-publication" src="{{like.publicationPhoto}}">
     </ion-thumbnail>
     </ion-col>    
   </ion-row>

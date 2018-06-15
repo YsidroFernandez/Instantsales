@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
-  Generated class for the CauseProvider provider.
+  Generated class for the publicationProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class CauseProvider {
+export class publicationProvider {
 
 
   //urlServer : string = 'http://209.156.175.205/nucli/api/';
@@ -18,14 +18,14 @@ export class CauseProvider {
   //urlServer : string = 'http://190.207.149.184/nucli/api/';
 
   constructor(public http: HttpClient) {
-    console.log('Hello CauseProvider Provider');
+    console.log('Hello publicationProvider Provider');
   }
 
-  getCauses(data){
+  getpublications(data){
     var body = {"idString": data};
     return new Promise((resolve, reject) => {
-      //this.http.post('intranet/cause/getCausesHome/', body)
-      this.http.post(this.urlServer +'cause/getCausesHome/', body)
+      //this.http.post('intranet/cause/getpublicationsHome/', body)
+      this.http.post(this.urlServer +'cause/getcausesHome/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -33,11 +33,11 @@ export class CauseProvider {
         });
     });
   }
-  getCausesFavorites(data){
+  getpublicationsFavorites(data){
     var body = {"idString": data};
     return new Promise((resolve, reject) => {
-      //this.http.post('intranet/cause/getCausesFavorites/', body)
-      this.http.post(this.urlServer+'cause/getCausesFavorites/', body)
+      //this.http.post('intranet/publication/getpublicationsFavorites/', body)
+      this.http.post(this.urlServer+'cause/getcausesFavorites/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -45,11 +45,11 @@ export class CauseProvider {
         });
     });
   }
-  getCausesUser(data){
+  getpublicationsUser(data){
     var body = {"idString": data};
     return new Promise((resolve, reject) => {
-      //this.http.post('intranet/cause/getCausesUser/', body)
-      this.http.post(this.urlServer+'cause/getCausesUser/', body)
+      //this.http.post('intranet/cause/getpublicationsUser/', body)
+      this.http.post(this.urlServer+'cause/getcausesUser/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -106,11 +106,11 @@ export class CauseProvider {
         });
     });
   }
-  addCause(data){
+  addpublication(data){
     var body = {"cause": data};
     return new Promise((resolve, reject) => {
-      //this.http.post('intranet/cause/addCause/', body)
-      this.http.post(this.urlServer+'cause/addCause/', body)
+      //this.http.post('intranet/cause/addpublication/', body)
+      this.http.post(this.urlServer+'cause/addcause/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -119,10 +119,10 @@ export class CauseProvider {
     });
   }
 
-  getCauseById(data){
+  getpublicationById(data){
     var body = {'idString': data};
     return new Promise((resolve, reject) => {
-      this.http.post(this.urlServer+'cause/getCauseById/', body)
+      this.http.post(this.urlServer+'cause/getcauseById/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {

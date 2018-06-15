@@ -4,7 +4,7 @@ import { Tabs } from 'ionic-angular/navigation/nav-interfaces';
 import { UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
 //import { CauseCreatePage } from '../cause-create/cause-create';
-/**
+/**cause
  * Generated class for the TabsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on

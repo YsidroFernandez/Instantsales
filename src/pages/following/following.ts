@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
+
 /**
  * Generated class for the FollowingPage page.
  *

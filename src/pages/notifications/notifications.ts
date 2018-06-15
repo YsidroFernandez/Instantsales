@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CauseProvider } from '../../providers/cause/cause';
+import { publicationProvider } from '../../providers/publication/publication';
 import { UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
 import { Events } from 'ionic-angular';
@@ -19,16 +19,16 @@ import { Events } from 'ionic-angular';
 export class NotificationsPage {
 
   count : number;
-  causes: any;
+  publications: any;
   many: boolean;
   user: any;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public storage: Storage,
-              public causeProvider: CauseProvider,
+              public publicationProvider: publicationProvider,
               public userProvider: UserProvider,
               public events: Events) {
-    this.causes = [];
+    this.publications = [];
     this.user = [];
     this.many = true;
   }
@@ -44,10 +44,10 @@ export class NotificationsPage {
       if(val){
         var par = JSON.parse(val);
         this.user = par;
-        this.causeProvider.getCausesFavorites(this.user.idString)
+        this.publicationProvider.getpublicationsFavorites(this.user.idString)
         .then((result) => {
           console.log(result);
-          this.causes= result['items'];
+          this.publications= result['items'];
         }, (err) => {
           console.log(err);
         });
@@ -75,8 +75,8 @@ export class NotificationsPage {
   }
 
 
-  goToCause(cause:any){
-    this.navCtrl.push('CauseRegisterPage',{cause : cause },
+  goTopublication(publication:any){
+    this.navCtrl.push('publicationRegisterPage',{publication : publication },
         {animate: true, direction: 'forward'});
   }
 }

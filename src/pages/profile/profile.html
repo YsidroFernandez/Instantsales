@@ -8,7 +8,7 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-
+publication
 <ion-content padding class="scroll-content">
   <ion-row align-items-center>
     <ion-col col-4 class="absolute-center">
@@ -77,41 +77,41 @@
   </ion-row>
   
     <ion-row class="padding" *ngIf="many">
-        <ion-col col-4 *ngFor="let cause of causes">
-            <ion-card card-background-page class="card-cause">
-                <img (click)="goToCause(cause)" src="{{cause.photo}}">          
+        <ion-col col-4 *ngFor="let publication of causes">
+            <ion-card card-background-page class="card-publication">
+                <img (click)="goToCause(publication)" src="{{publication.photo}}">          
             </ion-card>  
         </ion-col>       
     </ion-row>
 
     <div *ngIf="!many" class="back-content">
-        <ion-card *ngFor="let cause of causes">
+        <ion-card *ngFor="let publication of causes">
             <ion-item>
                 <ion-avatar item-start>
                   <img class="user-avatar" src="{{user.profilePicture}}">
                 </ion-avatar>
-              <ion-label class="username">{{cause.username}}</ion-label>
+              <ion-label class="username">{{publication.username}}</ion-label>
             </ion-item>
             <div>
-              <button  class = "btn-cause-image" (click)="goToCause(cause)">
-                <img src="{{cause.photo}}" class="img-cause">
+              <button  class = "btn-publication-image" (click)="goToCause(publication)">
+                <img src="{{publication.photo}}" class="img-publication">
               </button>
             </div>          
 
             <ion-card-content>
-                <ion-label class="description">{{cause.name}}</ion-label>
+                <ion-label class="description">{{publication.name}}</ion-label>
             </ion-card-content>         
             <ion-row class="row-operations">
               <ion-col col-1>
-                <img *ngIf="cause.liked" (click)="unlike(i)" class="btn-operation" src="assets/imgs/like-action2.png" alt="">
-                <img *ngIf="!cause.liked" (click)="like(i)" class="btn-operation" src="assets/imgs/button_icon_black.png" alt="">
+                <img *ngIf="publication.liked" (click)="unlike(i)" class="btn-operation" src="assets/imgs/like-action2.png" alt="">
+                <img *ngIf="!publication.liked" (click)="like(i)" class="btn-operation" src="assets/imgs/button_icon_black.png" alt="">
               </ion-col>
               <ion-col col-1>
-                <img *ngIf="!cause.favorited" (click)="addFavorite(i)" class="btn-operation" src="assets/imgs/favorite.png">
-                <img *ngIf="cause.favorited" (click)="deleteFavorite(i)" class="btn-operation" src="assets/imgs/favorite-action.png">
+                <img *ngIf="!publication.favorited" (click)="addFavorite(i)" class="btn-operation" src="assets/imgs/favorite.png">
+                <img *ngIf="publication.favorited" (click)="deleteFavorite(i)" class="btn-operation" src="assets/imgs/favorite-action.png">
               </ion-col>
               <ion-col col-1>
-                <img (click)="openMenuShare(cause.name, cause.photo)" class="btn-operation" src="assets/imgs/share.png">
+                <img (click)="openMenuShare(publication.name, publication.photo)" class="btn-operation" src="assets/imgs/share.png">
               </ion-col>
             </ion-row>                      
         </ion-card>
