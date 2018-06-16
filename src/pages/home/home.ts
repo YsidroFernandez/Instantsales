@@ -88,7 +88,7 @@ export class HomePage {
 
   like(i){
     var like = {"userId": this.user.idString,
-                "publicationId": this.publications[i].idString,
+                "causeId": this.publications[i].idString,
                 "userpublicationId": this.publications[i].userId,
                 "viewed": false};
     this.publicationProvider.addLike(like)
@@ -238,11 +238,11 @@ showAlert() {
     let actionSheet = this.actionsheetCtrl.create({
       //title: 'Social Share',
       
-      cssClass: 'social-share-color',
+      
       buttons: [
         {
           text: 'Facebook',
-          cssClass:'social-share-color',
+         
           icon: !this.platform.is('ios') ? 'logo-facebook' : null,
           handler: () => {
             this.facebookShare(des,img);
@@ -250,7 +250,7 @@ showAlert() {
         },
         {
           text: 'Instagram',
-          cssClass:'social-share-color',
+         
           icon: !this.platform.is('ios') ? 'logo-instagram' : null,
           handler: () => {
             this.instagramShare(des, img);
@@ -258,7 +258,7 @@ showAlert() {
         },
         {
           text: 'Twitter',
-          cssClass:'social-share-color',
+         
           icon: !this.platform.is('ios') ? 'logo-twitter' : null,
           handler: () => {
             this.twitterShare(des, img);
@@ -266,7 +266,7 @@ showAlert() {
         },
         {
           text: 'Whatsapp',
-          cssClass:'social-share-color',
+          
           icon: !this.platform.is('ios') ? 'logo-whatsapp' : null,
           handler: () => {
             this.whatsappShare(des, img);
@@ -274,7 +274,7 @@ showAlert() {
         },
         {
           text: 'Other',
-          cssClass:'social-share-color',
+         
           icon: !this.platform.is('ios') ? 'share' : null,
           handler: () => {
             this.regularShare(des,img);
@@ -289,7 +289,7 @@ showAlert() {
         },*/
         {
           text: 'Cancel',
-          cssClass:'social-share-color',
+         
           role: 'cancel', // will always sort to be on the bottom
           icon: !this.platform.is('ios') ? 'close' : null,
           handler: () => {
