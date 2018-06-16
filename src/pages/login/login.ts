@@ -41,7 +41,7 @@ user = {
     facebook:'',
     instagram:'',
     geolocate:[],
-    countCauses: 0,
+    countpublications: 0,
     countFollowers:0,
     countFollowing:0,
     profilePicture: ''

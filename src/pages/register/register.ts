@@ -38,7 +38,7 @@ export class RegisterPage {
     facebook:'',
     instagram:'',
     password:'',
-    countCauses: 0,
+    countpublications: 0,
     countFollowers:0,
     countFollowing:0,
     profilePicture: ''

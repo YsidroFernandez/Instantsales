@@ -21,15 +21,15 @@ publication
   </ion-row>
     
     <ion-row class="padding" *ngIf="many">
-        <ion-col col-4 *ngFor="let publication of causes">
+        <ion-col col-4 *ngFor="let publication of publications">
             <ion-card card-background-page class="card-publication">
-                <img (click)="goToCause(publication)" src="{{publication.photo}}">          
+                <img (click)="goTopublication(publication)" src="{{publication.photo}}">          
             </ion-card>  
         </ion-col>
     </ion-row>
   
     <ion-row *ngIf="!many">
-        <ion-card *ngFor="let publication of causes">
+        <ion-card *ngFor="let publication of publications">
             <ion-item>
                 <ion-avatar item-start>
                   <img class="user-avatar" src="{{publication.userPhoto}}">
@@ -37,7 +37,7 @@ publication
               <ion-label class="username">{{publication.username}}</ion-label>
             </ion-item>
             <div>
-              <button  class = "btn-publication-image" (click)="goToCause(publication)">
+              <button  class = "btn-publication-image" (click)="goTopublication(publication)">
                 <img src="{{publication.photo}}" class="img-publication">
               </button>
             </div>          
@@ -71,8 +71,8 @@ publication
                 <p class="username">{{publication.username}}</p>
             </ion-item>
           
-            <div class="causeImage">
-              <button ion-item (click)="goToCause(publication)">
+            <div class="publicationImage">
+              <button ion-item (click)="goTopublication(publication)">
                 <img src="{{publication.photo}}">
               </button>
             </div>          

@@ -3,8 +3,8 @@ import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { Tabs } from 'ionic-angular/navigation/nav-interfaces';
 import { UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
-//import { CauseCreatePage } from '../cause-create/cause-create';
-/**cause
+//import { publicationCreatePage } from '../publication-create/publication-create';
+/**publication
  * Generated class for the TabsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
@@ -64,7 +64,7 @@ export class TabsPage {
 
   tab1root= 'HomePage';
   tab2root='ExplorePage';
-  tab3root='CauseCreatePage';
+  tab3root='publicationCreatePage';
   tab4root='NotificationsPage';
   tab5root='LikesPage';
 

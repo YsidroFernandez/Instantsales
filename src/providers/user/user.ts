@@ -66,7 +66,7 @@ export class UserProvider {
   }
 
   addUser(data) {
-    data['countCauses'] = 0;
+    data['countpublications'] = 0;
     data['countFollowers'] = 0;
     data['countFollowing'] = 0;
 
@@ -83,7 +83,7 @@ export class UserProvider {
   }
 
   addUserfb(data) {
-    data['countCauses'] = 0;
+    data['countpublications'] = 0;
     data['countFollowers'] = 0;
     data['countFollowing'] = 0;
    

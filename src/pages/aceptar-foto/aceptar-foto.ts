@@ -28,7 +28,7 @@ export class AceptarFotoPage {
   }
 
   aceptar(){
-  	this.navCtrl.push('CauseRegisterPage',{photo: this.photo},
+  	this.navCtrl.push('publicationRegisterPage',{photo: this.photo},
         {animate: true, direction: 'forward'});
   }
 
