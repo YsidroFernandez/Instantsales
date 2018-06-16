@@ -102,7 +102,7 @@ export class HomePage {
   }
   unlike(i){
     var like = {"userId": this.user.idString,
-                "publicationId": this.publications[i].idString};
+                "causeId": this.publications[i].idString};
     this.publicationProvider.unlike(like)
     .then((result) => {
       console.log(result);
@@ -114,7 +114,7 @@ export class HomePage {
 
   addFavorite(i){
     var favorite = {"userId": this.user.idString,
-                "publicationId": this.publications[i].idString};
+                "causeId": this.publications[i].idString};
     this.publicationProvider.addFavorite(favorite)
     .then((result) => {
       console.log(result);
@@ -126,7 +126,7 @@ export class HomePage {
 
   deleteFavorite(i){
     var favorite = {"userId": this.user.idString,
-                "publicationId": this.publications[i].idString};
+                "causeId": this.publications[i].idString};
     this.publicationProvider.deleteFavorite(favorite)
     .then((result) => {
       console.log(result);

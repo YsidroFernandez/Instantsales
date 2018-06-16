@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class UserProvider {
 
   
-   //urlServer: String = 'http://209.156.175.205/nucli/api/';
+  // urlServer: String = 'http://209.156.175.205/nucli/api/';
    urlServer: String = 'intranet/';
 
 
