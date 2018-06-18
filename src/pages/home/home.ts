@@ -45,6 +45,11 @@ export class HomePage {
     });
   }
 
+  goDescriptionPublication(){
+    this.navCtrl.push('PublicationDescPage',
+    {animate: true, direction: 'forward'});
+  }
+
    updatepublication() {
     this.navCtrl.push('UpdateProfilePage',
     {animate: true, direction: 'forward'});
