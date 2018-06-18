@@ -15,6 +15,7 @@
 
 
 <ion-content fullscreen >
+  <button color="primary" class="button-signin" ion-button round (click)="goDescriptionPublication()"></button>
         <ion-card *ngFor="let publication of publications; let i = index">
             <ion-item (click)="goProfileUser(publication.userId)">
                 <ion-avatar item-start>
