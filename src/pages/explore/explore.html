@@ -8,55 +8,50 @@
   <ion-navbar color="white2" text-center>
     <ion-title> {{'EXPLORE' | translate }} </ion-title>
   </ion-navbar>
+  <ion-searchbar  (ionInput)="getItems($event)"></ion-searchbar>
+<ion-list>
+  <ion-item *ngFor="let item of items">
+    {{ item }}
+  </ion-item>
+</ion-list>
 </ion-header>
 
 
 <ion-content padding>
 	<ion-row>
-      <ion-col col-4>
-        <img src="https://media-exp2.licdn.com/media-proxy/ext?w=800&h=800&hash=1hWmcQk3jVNIuOOpYR2B%2FWLYm4E%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6nlh8Tw1It6a2FowGz60oISIfYC2G8G2f1spyfNT-tdoDSfrChsgUbfy4BhlI_IfnwEXO5H4a-Wdu5Itw38vOZd9acQw80cQ0BjlNc9vsKEk4v8MeCQ-TiYXMfl757bAmfEI3RY1kNBzUQ0b6FO7btD38h6BPebsDAL9hEC7AvoLMMllV3lviUHMEokaNF7nk43lWtzojQDgId2LeMJ1aaVENlGkzkHfpclv230TCJqgf0wlnk96WVDPGFHoUd0HKt7cvpQj-NrSxL70suyhMfkvxiBmPWn_wJ1VedZuk8cDuGvrHBQ3q40Yoc-3YI6ZapHy2ADkc_kCdhdsrRi2E3WZfD9QWO7hNtVdB_BXluleDESPe_3kGhQHBSYUqAewFzw43dtKWwMcdKS88xrshgRZ9iJCZURNdIPw">
+      <ion-col col-6 *ngFor="let publication of publications">
+        <ion-card >
+            
+            <div>
+              
+
+<ion-slides pager >
+
+  <ion-slide style="background-color: white">
+    <!-- <h2>Slide 1</h2> -->
+    <button  class = "btn-publication-image" (click)="goTopublication(publication)">
+                <img src="{{publication.photo}}" class="img-publication">
+    </button>
+  </ion-slide>
+
+  <ion-slide style="background-color: white">
+    <h2>Slide 2</h2>
+  </ion-slide>
+
+  <ion-slide style="background-color: white">
+    <h2>Slide 3</h2>
+  </ion-slide>
+
+</ion-slides>
+ <!-- fin de nuevo codigo para slider -->
+            </div>          
+            <ion-card-content>
+                 <ion-label class="precio">$ 99.999</ion-label>
+                 <ion-label class="description">{{publication.name}}</ion-label>
+            </ion-card-content>         
+                 
+        </ion-card>
       </ion-col>
-      <ion-col col-4>
-        <img src="https://www.msf.mx/sites/mexico/files/styles/wysiwyg_full_width/public/msf169378high.jpg?itok=1ytOZq-c">
-      </ion-col>
-      <ion-col col-4>
-        <img src="https://fernandocuevasblog.files.wordpress.com/2015/04/con-2-nic3b1os-y-un-joven-1506609_10205447667144941_2304613976256079619_n.jpg">
-      </ion-col>
-      <ion-col col-4>
-        <img src="https://s-media-cache-ak0.pinimg.com/736x/cc/13/d4/cc13d4dd6b4b41836e0ddd4daca1a9d1--playgrounds-download.jpg">
-      </ion-col>
-      <ion-col col-4>
-        <img src="https://scontent-frx5-1.cdninstagram.com/t51.2885-15/e35/25018652_136815710370081_3205219361543421952_n.jpg">
-      </ion-col>
-      <ion-col col-4>
-        <img src="https://scontent-frx5-1.cdninstagram.com/t51.2885-15/e35/21980680_117589538909969_3324222412710477824_n.jpg">
-      </ion-col>
-      <ion-col col-4>
-        <img src="http://www.ongbalanceworld.org/images-slider/thumbs/3.jpg">
-      </ion-col>
-      <ion-col col-4>
-        <img src="https://shoshanasalescorporationworld.files.wordpress.com/2015/06/11401453_1120772471272519_3141426987275543980_n.jpg">
-      </ion-col>
-      <ion-col col-4>
-        <img src="https://scontent-sea1-1.cdninstagram.com/t51.2885-15/e35/21433446_172719279969935_5697416685288423424_n.jpg">
-      </ion-col>
-      <ion-col col-4>
-        <img src="https://www.hacesfalta.org/userfiles/salud(2).png">
-      </ion-col>
-      <ion-col col-4>
-        <img src="http://givehope2africa.org/hosted/images/88/6462103c8011e784d8e18237336912/11061330_429005910623242_889634393172748597_n.jpg">
-      </ion-col>
-      <ion-col col-4>
-        <img src="https://media-exp2.licdn.com/media-proxy/ext?w=800&h=800&hash=hPiYiui9g84IBCa7MIA%2B4odmYWg%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta9Er0Vinkhwfjw8177yE41y87UNCVordEGXyD3u0qYrdfybre5SNcLSkuV0ffikclAY6fPL6QjfhD5e1K9--edwnjsbhdY27dA4BYBI3iSdF_NQ8">
-      </ion-col>
-      <ion-col col-4>
-        <img src="http://www.buenasnoticias.es/wp-content/uploads/2017/08/cruzrojaa.jpg">
-      </ion-col>
-      <ion-col col-4>
-        <img src="http://www.acnur.org/fileadmin/Images/RefugiadosAmericas/Venezuela/mujeres_refugiadas_venezuela-1.jpg">
-      </ion-col>
-      <ion-col col-4>
-        <img src="https://scontent-lga3-1.cdninstagram.com/t51.2885-15/e15/22280082_122226941820090_1685470683074658304_n.jpg">
-      </ion-col>
+     
     </ion-row>
 </ion-content>
