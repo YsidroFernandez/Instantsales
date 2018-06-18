@@ -8,6 +8,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { Platform, ActionSheetController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
+
 /**
  * Generated class for the HomePage page.
  *
@@ -36,7 +37,7 @@ export class HomePage {
               private socialSharing: SocialSharing,
               public platform: Platform,
               public actionsheetCtrl: ActionSheetController,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,) {
 
     this.publications=[];
     this.user=[];
@@ -230,9 +231,6 @@ showAlert() {
     alert.present();
   }
 
-
-
-  
 
   openMenuShare(des:string, img: string) {
     let actionSheet = this.actionsheetCtrl.create({
