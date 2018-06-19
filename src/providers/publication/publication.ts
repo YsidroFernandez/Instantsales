@@ -12,7 +12,8 @@ export class publicationProvider {
 
 
    //urlServer : string = 'http://209.156.175.205/nucli/api/';
-  urlServer : string = 'intranet/';
+  //urlServer : string = 'intranet/';
+  urlServer: String = 'http://localhost:3000/api/'
 
 
   //urlServer : string = 'http://190.207.149.184/nucli/api/';
@@ -25,7 +26,7 @@ export class publicationProvider {
     var body = {"idString": data};
     return new Promise((resolve, reject) => {
       //this.http.post('intranet/publication/getpublicationsHome/', body)
-      this.http.post(this.urlServer +'cause/getCausesHome/', body)
+      this.http.post('http://localhost:3000/api/publication/getPublicationsHome/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -37,7 +38,7 @@ export class publicationProvider {
     var body = {"idString": data};
     return new Promise((resolve, reject) => {
       //this.http.post('intranet/publication/getpublicationsFavorites/', body)
-      this.http.post(this.urlServer+'cause/getCausesFavorites/', body)
+      this.http.post(this.urlServer+'publication/getPublicationsFavorites/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -45,11 +46,11 @@ export class publicationProvider {
         });
     });
   }
-  getpublicationsUser(data){
-    var body = {"idString": data};
+  getpublicationsUser(userIdLogged,userIdPublications){
+    var body = {userIdLogged,userIdPublications};
     return new Promise((resolve, reject) => {
       //this.http.post('intranet/publication/getpublicationsUser/', body)
-      this.http.post(this.urlServer+'cause/getCausesUser/', body)
+      this.http.post(this.urlServer+'publication/getPublicationsUser/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -62,7 +63,7 @@ export class publicationProvider {
     var body = {"like": data};
     return new Promise((resolve, reject) => {
       //this.http.post('intranet/publication/addLike/', body)
-      this.http.post(this.urlServer+'cause/addLike/', body)
+      this.http.post(this.urlServer+'publication/addLike/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -74,7 +75,7 @@ export class publicationProvider {
     var body = {"like": data};
     return new Promise((resolve, reject) => {
       //this.http.post('intranet/publication/deleteLike/', body)
-      this.http.post(this.urlServer+'cause/deleteLike/', body)
+      this.http.post(this.urlServer+'publication/deleteLike/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -86,7 +87,7 @@ export class publicationProvider {
     var body = {"favorite": data};
     return new Promise((resolve, reject) => {
       //this.http.post('intranet/publication/addFavorite/', body)
-      this.http.post(this.urlServer+'cause/addFavorite/', body)
+      this.http.post(this.urlServer+'publication/addFavorite/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -98,7 +99,7 @@ export class publicationProvider {
     var body = {"favorite": data};
     return new Promise((resolve, reject) => {
       //this.http.post('intranet/publication/deleteFavorite/', body)
-      this.http.post(this.urlServer+'cause/deleteFavorite/', body)
+      this.http.post(this.urlServer+'publication/deleteFavorite/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -110,7 +111,7 @@ export class publicationProvider {
     var body = {"publication": data};
     return new Promise((resolve, reject) => {
       //this.http.post('intranet/publication/addpublication/', body)
-      this.http.post(this.urlServer+'cause/addCause/', body)
+      this.http.post(this.urlServer+'publication/addPublication/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -122,7 +123,7 @@ export class publicationProvider {
   getpublicationById(data){
     var body = {'idString': data};
     return new Promise((resolve, reject) => {
-      this.http.post(this.urlServer+'cause/getCauseById/', body)
+      this.http.post(this.urlServer+'publication/getPublicationById/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {

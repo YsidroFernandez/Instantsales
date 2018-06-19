@@ -12,7 +12,9 @@ export class UserProvider {
 
   
   // urlServer: String = 'http://209.156.175.205/nucli/api/';
-   urlServer: String = 'intranet/';
+   //urlServer: String = 'intranet/';
+
+   urlServer: String = 'http://localhost:3000/api/'
 
 
   //urlServer: String = 'http://190.207.149.184/nucli/api/';
@@ -62,7 +64,9 @@ export class UserProvider {
 
 
   loginUser(username, password){
-    return this.http.get(this.urlServer+'user/loginUser/username/'+username+'/password/'+password);
+    //return this.http.get(this.urlServer+'user/loginUser/username/'+username+'/password/'+password);
+    let body = {username,password};
+    return this.http.post('http://localhost:3000/login', body)
   }
 
   addUser(data) {
@@ -122,11 +126,10 @@ export class UserProvider {
     });
   }
 
-  getFollowers(idString){
-    var body = {"idString": idString, "type":"Followers"};
-    var data = {"friend": body};
+  getFollowers(userId, userIdLogged){
+    var body = {users:{userId,userIdLogged}, type:"Followers"}
     return new Promise((resolve, reject) => {
-      this.http.post(this.urlServer+'user/getFriends/', data)
+      this.http.post(this.urlServer+'user/getFriends/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -135,11 +138,10 @@ export class UserProvider {
     });
   }
 
-  getFollowing(idString){
-    var body = {"idString": idString, "type":"Following"};
-    var data = {"friend": body};
+  getFollowing(userId, userIdLogged){
+    var body = {users:{userId,userIdLogged}, type:"Following"}
     return new Promise((resolve, reject) => {
-      this.http.post(this.urlServer+'user/getFriends/', data)
+      this.http.post(this.urlServer+'user/getFriends/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -164,6 +166,7 @@ export class UserProvider {
   deleteFollower(followerId, followedId){
     var body = {"followerId": followerId, "followedId":followedId};
     var data = {"follower": body};
+    console.log(data);
     return new Promise((resolve, reject) => {
       this.http.post(this.urlServer+'user/deleteFollower/', data)
         .subscribe(res => {

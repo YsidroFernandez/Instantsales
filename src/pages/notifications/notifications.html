@@ -29,72 +29,54 @@ publication
     </ion-row>
   
     <ion-row *ngIf="!many">
-        <ion-card *ngFor="let publication of publications">
-            <ion-item>
+        <ion-card *ngFor="let publication of publications; let i = index">
+            <ion-item (click)="goProfileUser(publication.userId._id)">
                 <ion-avatar item-start>
-                  <img class="user-avatar" src="{{publication.userPhoto}}">
+                  <img class="user-avatar" src="{{publication.userId.profilePicture}}">
                 </ion-avatar>
-              <ion-label class="username">{{publication.username}}</ion-label>
+              <ion-label class="username">{{publication.userId.username}}</ion-label>
             </ion-item>
             <div>
-              <button  class = "btn-publication-image" (click)="goTopublication(publication)">
+              
+
+ <!-- nuevo codigo para slider -->
+<ion-slides pager>
+
+  <ion-slide style="background-color: white">
+    <!-- <h2>Slide 1</h2> -->
+    <button  class = "btn-publication-image" (click)="goTopublication(publication)">
                 <img src="{{publication.photo}}" class="img-publication">
-              </button>
+    </button>
+  </ion-slide>
+
+  <ion-slide style="background-color: white">
+    <h2>Slide 2</h2>
+  </ion-slide>
+
+  <ion-slide style="background-color: white">
+    <h2>Slide 3</h2>
+  </ion-slide>
+
+</ion-slides>
+ <!-- fin de nuevo codigo para slider -->
             </div>          
             <ion-card-content>
-                <ion-label class="description">{{publication.name}}</ion-label>
+                 <ion-label class="precio">BsS 99.999</ion-label>
+                 <ion-label class="description">{{publication.name}}</ion-label>
             </ion-card-content>         
             <ion-row class="row-operations">
               <ion-col col-1>
-                <img *ngIf="publication.liked" (click)="unlike(i)" class="btn-operation" src="assets/imgs/like-action2.png" alt="">
-                <img *ngIf="!publication.liked" (click)="like(i)" class="btn-operation" src="assets/imgs/button_icon_black.png" alt="">
+                <ion-icon *ngIf="!publication.liked" (click)="like(i)" class="btn-operation" name="ios-heart-outline" alt=""></ion-icon>
+                 <ion-icon *ngIf="publication.liked" (click)="unlike(i)" class="btn-operation" name="ios-heart" alt=""></ion-icon>
               </ion-col>
               <ion-col col-1>
-                <img *ngIf="!publication.favorited" (click)="addFavorite(i)" class="btn-operation" src="assets/imgs/favorite.png">
-                <img *ngIf="publication.favorited" (click)="deleteFavorite(i)" class="btn-operation" src="assets/imgs/favorite-action.png">
+                <ion-icon *ngIf="!publication.favorited" (click)="addFavorite(i)" class="btn-operation" name="ios-cart-outline" alt=""></ion-icon>
+                <ion-icon *ngIf="publication.favorited" (click)="deleteFavorite(i)" class="btn-operation" name="ios-cart" alt=""></ion-icon>
               </ion-col>
               <ion-col col-1>
-                <img (click)="openMenuShare(publication.name, publication.photo)" class="btn-operation" src="assets/imgs/share.png">
+                <ion-icon (click)="openMenuShare(publication.name, publication.photo)" class="btn-operation" name="share-alt"></ion-icon>
               </ion-col>
-            </ion-row>
-            <!--
-            <ion-item>
-              <ion-avatar item-start>
-                <img src="{{publication.userPhoto}}">
-              </ion-avatar>
-              <ion-avatar item-end>
-                <ion-note class="username">
-                  <br>
-                  11 hours ago
-                </ion-note>
-              </ion-avatar>
-                <p class="username">{{publication.username}}</p>
-            </ion-item>
-          
-            <div class="publicationImage">
-              <button ion-item (click)="goTopublication(publication)">
-                <img src="{{publication.photo}}">
-              </button>
-            </div>          
-            <ion-card-content>
-              <p class="description">{{publication.name}}</p>
-            </ion-card-content>
-          
-            <ion-row>
-              &nbsp;&nbsp;&nbsp;
-                <ion-col col-2>
-                    <img *ngIf="publication.liked" style="width: 25px" src="assets/imgs/like-action.png" alt="">
-                    <img *ngIf="!publication.liked" style="width: 25px" src="assets/imgs/button_icon_black.png" alt="">
-                  </ion-col>
-                  <ion-col col-2>
-                    <img *ngIf="!publication.favorited" style="width: 25px" src="assets/imgs/favorite.png">
-                    <img *ngIf="publication.favorited" style="width: 25px" src="assets/imgs/favorite-action.png">
-                  </ion-col>
-                  <ion-col col-2>
-                    <img style="width: 25px" src="assets/imgs/share.png">
-                  </ion-col>
-            </ion-row>
-          -->
+            </ion-row>                      
         </ion-card>
       
   </ion-row>

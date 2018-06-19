@@ -34,10 +34,10 @@ export class FollowingPage {
     this.storage.get('user').then((val) => {
       if(val){
         var par = JSON.parse(val);
-        this.userIdLogged = par.idString;
+        this.userIdLogged = par._id;
     
         console.log('ionViewDidLoad FollowingPage');
-        this.userProvider.getFollowing(this.userId)
+        this.userProvider.getFollowing(this.userId, this.userIdLogged)
             .then((result) => {
               console.log(result);
               this.following = result['items'];
@@ -54,11 +54,12 @@ export class FollowingPage {
   }
 
   unFollow(i){
-    this.userProvider.deleteFollower(this.userId,this.following[i].idString)
+    this.userProvider.deleteFollower(this.userIdLogged,this.following[i]._id)
       .then((result) => {
           console.log(result);
-          //this.following[i].isFollowe = true;
-          this.following.splice(i, 1);
+          this.following[i].isFollowed = false;
+          if(this.userIdLogged == this.userId)
+            this.following.splice(i, 1);
         }, (err) => {
           console.log(err);
       });

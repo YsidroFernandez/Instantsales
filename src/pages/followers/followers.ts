@@ -39,8 +39,8 @@ export class FollowersPage {
     this.storage.get('user').then((val) => {
       if(val){
         var par = JSON.parse(val);
-        this.userIdLogged = par.idString;
-        this.userProvider.getFollowers(this.userId)
+        this.userIdLogged = par._id;
+        this.userProvider.getFollowers(this.userId, this.userIdLogged)
           .then((result) => {
             console.log(result);
             this.followers = result['items'];
@@ -52,7 +52,7 @@ export class FollowersPage {
   }
 
   follow(i){
-    this.userProvider.addFollower(this.userIdLogged,this.followers[i].idString)
+    this.userProvider.addFollower(this.userIdLogged,this.followers[i]._id)
       .then((result) => {
           console.log(result);
           this.followers[i].isFollowed = true;
@@ -63,7 +63,7 @@ export class FollowersPage {
   }
 
   unFollow(i){
-    this.userProvider.deleteFollower(this.userIdLogged,this.followers[i].idString)
+    this.userProvider.deleteFollower(this.userIdLogged,this.followers[i]._id)
       .then((result) => {
           console.log(result);
           //this.following[i].isFollowe = true;

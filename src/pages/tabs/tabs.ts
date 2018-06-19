@@ -40,7 +40,7 @@ export class TabsPage {
     this.storage.get('user').then((val) => {
       console.log(val);
         if(val){
-          this.userId=JSON.parse(val).idString;
+          this.userId=JSON.parse(val)._id;
           areNewLikes = setInterval(()=>{
             this.userProvider.areNewLikes(this.userId)
               .then((result) => {
