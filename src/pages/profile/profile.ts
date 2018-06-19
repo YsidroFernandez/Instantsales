@@ -60,7 +60,10 @@ export class ProfilePage {
     this.storage.get('user').then((val) => {
       if(val){
         var par = JSON.parse(val);
-        this.userLoggedId = par.idString;
+        console.log(par);
+        this.userLoggedId = par._id;
+        console.log(this.userId)
+        console.log(this.userLoggedId);
         if(this.userId == this.userLoggedId || this.userId == ''){  
           
           this.userProvider.getUser(this.userLoggedId, this.userLoggedId)
@@ -69,7 +72,7 @@ export class ProfilePage {
               this.user= result['items'];
               this.ownProfile = true;
               console.log(this.user);
-              this.publicationProvider.getpublicationsUser(this.user.idString)
+              this.publicationProvider.getpublicationsUser(this.user._id, this.user._id)
                 .then((result) => {
                   console.log(result);
                   this.publications= result['items'];
@@ -87,7 +90,7 @@ export class ProfilePage {
               this.user= result['items'];
               this.ownProfile = false;
               console.log(this.user);
-              this.publicationProvider.getpublicationsUser(this.user.idString)
+              this.publicationProvider.getpublicationsUser(this.userLoggedId,this.user._id)
                 .then((result) => {
                   console.log(result);
                   this.publications= result['items'];
@@ -111,7 +114,7 @@ export class ProfilePage {
       this.navCtrl.push('FollowersPage',{userId: this.userId},
                         {animate: true, direction: 'forward'});
     }else{
-      this.navCtrl.push('FollowersPage',{userId: this.user.idString},
+      this.navCtrl.push('FollowersPage',{userId: this.user._id},
                         {animate: true, direction: 'forward'});
     }
     
@@ -122,7 +125,7 @@ export class ProfilePage {
       this.navCtrl.push('FollowingPage',{userId: this.userId},
                         {animate: true, direction: 'forward'});
     }else{
-      this.navCtrl.push('FollowingPage',{userId: this.user.idString},
+      this.navCtrl.push('FollowingPage',{userId: this.user._id},
                         {animate: true, direction: 'forward'});
     }
   }
@@ -136,12 +139,12 @@ export class ProfilePage {
   }
 
   viewProfile(){
-    this.navCtrl.push('EditProfilePage',{userId: this.user.idString},
+    this.navCtrl.push('EditProfilePage',{userId: this.user._id},
                         {animate: true, direction: 'forward'});
   }
 
-  follow(i){
-    this.userProvider.addFollower(this.userLoggedId,this.user.idString)
+  follow(){
+    this.userProvider.addFollower(this.userLoggedId,this.user._id)
       .then((result) => {
           console.log(result);
           this.user.isFollowed = true;
@@ -155,6 +158,17 @@ export class ProfilePage {
     publication = {...publication, userPhoto: this.user.profilePicture};
     this.navCtrl.push('publicationRegisterPage',{publication : publication },
         {animate: true, direction: 'forward'});
+  }
+
+  unFollow(){
+  this.userProvider.deleteFollower(this.userLoggedId,this.userId)
+    .then((result) => {
+        console.log(result);
+        this.user.isFollowed = false;
+        this.user.countFollowers--;
+      }, (err) => {
+        console.log(err);
+    });
   }
 
 }

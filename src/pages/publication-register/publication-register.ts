@@ -30,26 +30,33 @@ export class publicationRegisterPage {
                 content: 'Please wait...'
               });
   	this.photo = this.navParams.get('photo');
+    let isView = this.isViewPublication();
+
   	this.publicationForm = formBuilder.group({
-	      name: ['', Validators.compose([Validators.maxLength(40), Validators.pattern('[a-zA-Z0-9_. ]*'), Validators.required])],
-	      description: ['', Validators.compose([Validators.maxLength(200), Validators.pattern('[a-zA-Z0-9_. ]*'), Validators.required])],
-	      location: [''],
-	      contact: [''],
-        creationDate: [''],
-        username: [''],
+	      name: [{value:'', disabled : isView}, Validators.compose([Validators.maxLength(40), Validators.pattern('[a-zA-Z0-9_. ]*'), Validators.required])],
+	      description: [{value:'', disabled : isView}, Validators.compose([Validators.maxLength(200), Validators.pattern('[a-zA-Z0-9_. ]*'), Validators.required])],
+	      location: [{value:'', disabled : isView}],
+	      contact: [{value:'', disabled : isView}],
+        creationDate: [{value:'', disabled : isView}],
+        username: [{value:'', disabled : isView}],
 	  });
+    console.log(this.publicationForm.get('creationDate'));
     
     if(this.navParams.get('publication')){
         this.publication = this.navParams.get('publication');
-        this.disabled = true;
         this.photo = this.publication.photo;
         this.publicationForm.get('name').setValue(this.publication.name);
         this.publicationForm.get('description').setValue(this.publication.description);
         this.publicationForm.get('location').setValue(this.publication.location);
         this.publicationForm.get('contact').setValue(this.publication.contact);
         this.publicationForm.get('creationDate').setValue(this.publication.creationDate);
-        this.publicationForm.get('username').setValue(this.publication.username);
+        this.publicationForm.get('username').setValue(this.publication.userId.username);
       }
+      console.log(this.publicationForm.get('creationDate'));
+  }
+
+  isViewPublication(){
+    return !this.navParams.get('photo');
   }
 
   savepublication(){
@@ -63,14 +70,12 @@ export class publicationRegisterPage {
           this.loader.present();
 
 	        let publication = {...this.publicationForm.value,
-          			       "userId": par.idString,
-                       "username": par.username,
-                       "useremail": par.email,
+          			       "userId": par._id,
                        "photo": this.photo};
+          delete publication.creationDate;
 	        this.publicationProvider.addpublication(publication)
 	        .then((result) => {
-	          alert(result);
-	          this.userProvider.getUser(par.idString,par.idString).then((res)=>{
+	          this.userProvider.getUser(par._id,par._id).then((res)=>{
 	            console.log(res['items']);
 	            this.storage.set('user', JSON.stringify(res['items']));
               this.loader.dismiss();
