@@ -171,4 +171,53 @@ export class ProfilePage {
     });
   }
 
+  like(i){
+    var like = {"userId": this.user._id,
+                "publicationId": this.publications[i]._id,
+                "userPublicationId": this.publications[i].userId._id,};
+    this.publicationProvider.addLike(like)
+    .then((result) => {
+      console.log(result);
+      this.publications[i].liked = true;  
+    }, (err) => {
+      console.log(err);
+    });
+
+  }
+  unlike(i){
+    var like = {"userId": this.user._id,
+                "publicationId": this.publications[i]._id};
+    this.publicationProvider.unlike(like)
+    .then((result) => {
+      console.log(result);
+      this.publications[i].liked = false;  
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  addFavorite(i){
+    var favorite = {"userId": this.user._id,
+                "publicationId": this.publications[i]._id};
+    this.publicationProvider.addFavorite(favorite)
+    .then((result) => {
+      console.log(result);
+      this.publications[i].favorited = true;  
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  deleteFavorite(i){
+    var favorite = {"userId": this.user._id,
+                "publicationId": this.publications[i]._id};
+    this.publicationProvider.deleteFavorite(favorite)
+    .then((result) => {
+      console.log(result);
+      this.publications[i].favorited = false;  
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
 }
