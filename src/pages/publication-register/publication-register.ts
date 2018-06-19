@@ -36,6 +36,7 @@ export class publicationRegisterPage {
 	      name: [{value:'', disabled : isView}, Validators.compose([Validators.maxLength(40), Validators.pattern('[a-zA-Z0-9_. ]*'), Validators.required])],
 	      description: [{value:'', disabled : isView}, Validators.compose([Validators.maxLength(200), Validators.pattern('[a-zA-Z0-9_. ]*'), Validators.required])],
 	      location: [{value:'', disabled : isView}],
+        price: [{value:'', disabled : isView}],
 	      contact: [{value:'', disabled : isView}],
         creationDate: [{value:'', disabled : isView}],
         username: [{value:'', disabled : isView}],
@@ -48,6 +49,7 @@ export class publicationRegisterPage {
         this.publicationForm.get('name').setValue(this.publication.name);
         this.publicationForm.get('description').setValue(this.publication.description);
         this.publicationForm.get('location').setValue(this.publication.location);
+         this.publicationForm.get('price').setValue(this.publication.price);
         this.publicationForm.get('contact').setValue(this.publication.contact);
         this.publicationForm.get('creationDate').setValue(this.publication.creationDate);
         this.publicationForm.get('username').setValue(this.publication.userId.username);

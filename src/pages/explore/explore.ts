@@ -18,7 +18,7 @@ import { Storage } from '@ionic/storage';
 })
 export class ExplorePage {
   searchQuery: string = '';
-  items: string[];
+  items: any;
    publications: any;
     user:any;
 
@@ -56,11 +56,12 @@ export class ExplorePage {
 
 
 initializeItems() {
-    this.items = [
+   /* this.items = [
       'Computacion',
       'Celulares',
       'Ropa',
-    ];
+    ];*/
+    this.items=this.publications;
   }
    getItems(ev: any) {
     // Reset items back to all of the items
@@ -72,7 +73,8 @@ initializeItems() {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+         return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        //return (item);
       })
     }
   }
