@@ -10,6 +10,13 @@ page-profile {
     ion-content {
         background-image: url('../assets/imgs/fondo.png');
     }
+
+    .precio{
+        font-family: 'BwHelder';
+        font-size: 20px;
+        color: green;
+        text-align: right;
+    }
     
     .name{
         font-size: 12px;

@@ -17,11 +17,11 @@
 <ion-content fullscreen >
   <button color="primary" class="button-signin" ion-button round (click)="goDescriptionPublication()"></button>
         <ion-card *ngFor="let publication of publications; let i = index">
-            <ion-item (click)="goProfileUser(publication.userId)">
+            <ion-item (click)="goProfileUser(publication.userId._id)">
                 <ion-avatar item-start>
-                  <img class="user-avatar" src="{{publication.userPhoto}}">
+                  <img class="user-avatar" src="{{publication.userId.profilePicture}}">
                 </ion-avatar>
-              <ion-label class="username">{{publication.username}}</ion-label>
+              <ion-label class="username">{{publication.userId.username}}</ion-label>
             </ion-item>
             <div>
               

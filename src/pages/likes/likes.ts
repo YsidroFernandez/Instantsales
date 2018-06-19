@@ -53,8 +53,8 @@ export class LikesPage {
       if(val){
         var user = JSON.parse(val);
         console.log(user);
-        console.log(user.idString);
-        this.userProvider.getLikesUser(user.idString)
+        console.log(user._id);
+        this.userProvider.getLikesUser(user._id)
         .then((result) => {
           console.log(result);
           this.likes= result['items'];
@@ -63,5 +63,10 @@ export class LikesPage {
         });
       }
     });  
+  }
+
+  goTopublication(publication:any){
+    this.navCtrl.push('publicationRegisterPage',{publication : publication },
+        {animate: true, direction: 'forward'});
   }
 }

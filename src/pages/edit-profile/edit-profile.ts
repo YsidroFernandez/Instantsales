@@ -87,7 +87,7 @@ export class EditProfilePage {
       if(val){
         var par = JSON.parse(val);
         if(!this.userId)
-          this.userId = par.idString;
+          this.userId = par._id;
         console.log(this.userId);
         this.userProvider.getUser(this.userId, this.userId)
         .then((result) => {
@@ -144,7 +144,7 @@ export class EditProfilePage {
           this.userProvider.updateUserPicture(this.user).then((result) => {
           this.okAlert();
           this.loader.dismiss();
-          this.userProvider.getUser(this.user.idString,this.user.idString).then((res)=>{
+          this.userProvider.getUser(this.user._id,this.user._id).then((res)=>{
             console.log(res['items']);
             this.storage.set('user', JSON.stringify(res['items']));  
           },(err)=>console.log(err)); //getUser
@@ -184,10 +184,10 @@ export class EditProfilePage {
       console.log(this.loginForm.value);
       this.loader.present();
       var userUpdated = this.loginForm.value;
-      userUpdated['idString'] = this.user.idString;
+      userUpdated['_id'] = this.user._id;
       this.userProvider.editUser(userUpdated).then((result) => {
         console.log(result);
-        this.userProvider.getUser(this.user.idString,this.user.idString).then((res)=>{
+        this.userProvider.getUser(this.user._id,this.user._id).then((res)=>{
           console.log(res['items']);
           console.log(userUpdated);
           this.storage.set('user', JSON.stringify(res['items']));
