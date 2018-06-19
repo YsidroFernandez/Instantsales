@@ -50,7 +50,6 @@ publication
           <button *ngIf="user.isPublic" ion-button small round block color="black" outline class='button-foll' style="text-transform: none;" (click)="viewProfile()">View Profile</button>
         </ion-col>        
         <ion-col *ngIf="!ownProfile" col-4 text-center class="col-btn-foll">
-
           <button *ngIf="!ownProfile && !user.isFollowed" ion-button small round block class='button-foll' color="green1" style="text-transform: none;" (click)="follow()">{{'FOLLOW' | translate }}</button>
           <button (click)="unFollow()" *ngIf="!ownProfile && user.isFollowed" ion-button small round block class='button-foll' color="green1" style="text-transform: none;" outline>{{'FOLLOWED' | translate }}</button>
         </ion-col>
