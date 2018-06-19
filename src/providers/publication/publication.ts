@@ -11,12 +11,9 @@ import { Injectable } from '@angular/core';
 export class publicationProvider {
 
 
-   //urlServer : string = 'http://209.156.175.205/nucli/api/';
   //urlServer : string = 'intranet/';
-  urlServer: String = 'http://localhost:3000/api/'
-
-
-  //urlServer : string = 'http://190.207.149.184/nucli/api/';
+  urlServer : string = 'http://instantsales.us-3.evennode.com/api/';
+  //urlServer: String = 'http://localhost:3000/api/'
 
   constructor(public http: HttpClient) {
     console.log('Hello publicationProvider Provider');
@@ -26,7 +23,7 @@ export class publicationProvider {
     var body = {"idString": data};
     return new Promise((resolve, reject) => {
       //this.http.post('intranet/publication/getpublicationsHome/', body)
-      this.http.post('http://localhost:3000/api/publication/getPublicationsHome/', body)
+      this.http.post(this.urlServer+'publication/getPublicationsHome/', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {

@@ -11,13 +11,10 @@ import { Injectable } from '@angular/core';
 export class UserProvider {
 
   
-  // urlServer: String = 'http://209.156.175.205/nucli/api/';
+  
    //urlServer: String = 'intranet/';
-
-   urlServer: String = 'http://localhost:3000/api/'
-
-
-  //urlServer: String = 'http://190.207.149.184/nucli/api/';
+   urlServer : string = 'http://instantsales.us-3.evennode.com/api/';
+   //urlServer: String = 'http://localhost:3000/api/'
 
   
   constructor(public http: HttpClient) {
@@ -66,7 +63,8 @@ export class UserProvider {
   loginUser(username, password){
     //return this.http.get(this.urlServer+'user/loginUser/username/'+username+'/password/'+password);
     let body = {username,password};
-    return this.http.post('http://localhost:3000/login', body)
+    //return this.http.post('http://localhost:3000/login', body)
+    return this.http.post('http://instantsales.us-3.evennode.com/login', body)
   }
 
   addUser(data) {
@@ -78,7 +76,7 @@ export class UserProvider {
     var body = {"user": data};
     console.log(body);
     return new Promise((resolve, reject) => {
-      this.http.post(this.urlServer+'user/addUser/', body)
+      this.http.post('http://instantsales.us-3.evennode.com/addUser', body)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
