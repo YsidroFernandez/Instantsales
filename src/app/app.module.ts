@@ -18,6 +18,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UserProvider } from '../providers/user/user';
 import { publicationProvider } from '../providers/publication/publication';
 import { SettingPage } from '../pages/setting/setting';
+//import { PublicationDesPage } from '../pages/publication-des/publication-des';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -57,7 +58,8 @@ export function createTranslateLoader(http: HttpClient) {
     UserProvider,
     publicationProvider,
     SocialSharing,
-    Facebook
+    Facebook,
+   // PublicationDesPage
   ],
   exports: [
     SettingPage

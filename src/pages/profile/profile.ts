@@ -17,7 +17,8 @@ import { SettingPage } from '../setting/setting';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
+  option: string;
+  rep: number;
   publications: any;
   many: boolean;
   user: any;
@@ -40,6 +41,8 @@ export class ProfilePage {
     console.log('userId');
     console.log(this.userId);
     console.log(navParams);
+    this.option="sales";
+    this.rep=80;
   }
 
   ionViewDidEnter(){

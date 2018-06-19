@@ -7,6 +7,9 @@
         </a>
     </ion-buttons>
   </ion-navbar>
+
+  
+
 </ion-header>
 publication
 <ion-content padding class="scroll-content">
@@ -28,23 +31,23 @@ publication
       </ion-row>
       <ion-row>
         <ion-col text-center class="textCounters">
-            <ion-label class="labels" style="color:dimgray">{{'publicationS'| translate }}</ion-label>
+            <ion-label class="labels" style="color:black">{{'publicationS'| translate }}</ion-label>
         </ion-col>
         <ion-col text-center (click)="goToFollowers()" class="textCounters">
-            <ion-label class="labels" style="color:dimgray">{{'FOLLOWERS' | translate }}</ion-label>
+            <ion-label class="labels" style="color:black">{{'FOLLOWERS' | translate }}</ion-label>
         </ion-col>
         <ion-col text-center (click)="goToFollowing()" class="textCounters">
-            <ion-label class="labels" style="color:dimgray">{{'FOLLOWING' | translate }}</ion-label>
+            <ion-label class="labels" style="color:black">{{'FOLLOWING' | translate }}</ion-label>
         </ion-col>
       </ion-row>    
       <ion-row text-center>          
         <ion-col *ngIf="ownProfile" col-12 text-center class="col-btn-foll">
           <!--<ion-label class="labels">{{user.username}}</ion-label>-->
-          <button *ngIf="user.isPublic" (click)="viewProfile()" ion-button small round block color="green1" outline class='button-foll' style="text-transform: none;">View Profile</button>
+          <button *ngIf="user.isPublic" (click)="viewProfile()" ion-button small round block color="black" outline class='button-foll' style="text-transform: none;">View Profile</button>
         </ion-col>
         <ion-col *ngIf="!ownProfile" col-8 text-center class="col-btn-foll">
           <!--<ion-label class="labels">{{user.username}}</ion-label>-->
-          <button *ngIf="user.isPublic" ion-button small round block color="green1" outline class='button-foll' style="text-transform: none;" (click)="viewProfile()">View Profile</button>
+          <button *ngIf="user.isPublic" ion-button small round block color="black" outline class='button-foll' style="text-transform: none;" (click)="viewProfile()">View Profile</button>
         </ion-col>        
         <ion-col *ngIf="!ownProfile" col-4 text-center class="col-btn-foll">
           <button *ngIf="!ownProfile && !user.isFollowed" ion-button small round block class='button-foll' color="green1" style="text-transform: none;" (click)="follow()">{{'FOLLOW' | translate }}</button>
@@ -54,7 +57,7 @@ publication
       <!-- <ion-row *ngIf="!ownProfile && user.isFollowed">
         <ion-col col-8 text-center><ion-label class="labels">{{user.username}}</ion-label></ion-col>
         <ion-col col-4 text-center>
-          <button ion-button small round class='button-foll' color="green1" style="text-transform: none;" outline>{{'FOLLOWED' | translate }}</button>        </ion-col>
+          <button ion-button small round class='button-foll' color="black" style="text-transform: none;" outline>{{'FOLLOWED' | translate }}</button>        </ion-col>
       </ion-row>    -->
     </ion-col>
   </ion-row>
@@ -63,17 +66,41 @@ publication
     <ion-col col-8>
         <ion-label class="name">{{user.name}}</ion-label>
         <ion-label class="bio">{{user.bio}}</ion-label>
+         <ion-label class="email">{{user.phone}}</ion-label>
         <ion-label class="email">{{user.email}}</ion-label>
     </ion-col>
+    <ion-item >
+    <!--   barra de reputacion -->
+      <<ion-label class="email" color="primary">Reputation {{rep}}% </ion-label>
+      <ion-range   min="10" max="100" step="1" snaps="false" [(ngModel)]="rep" class="range" 
+       disabled  readonly>
+        <ion-icon range-left small color="primary" name="star"></ion-icon>
+        <ion-icon range-right color="primary" name="star"></ion-icon>
+      </ion-range>
+    </ion-item>
   </ion-row>
+
   <br>
+  <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="option">
+          <ion-segment-button value="sales">
+            Sales
+          </ion-segment-button>
+          <ion-segment-button value="buys">
+            Buys
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+<div [ngSwitch]="option">
+    <ion-list *ngSwitchCase="'sales'">
+
   <ion-row *ngIf="many">
-      <ion-col class="col-grid-list" text-center (click)="selectMany('many')"><ion-icon color="green1" name="ios-apps" class="btn-grid-list"></ion-icon></ion-col>
+      <ion-col class="col-grid-list" text-center (click)="selectMany('many')"><ion-icon color="black" name="ios-apps" class="btn-grid-list"></ion-icon></ion-col>
       <ion-col class="col-grid-list" text-center (click)="selectMany('list')"><ion-icon name="md-list" class="btn-grid-list"></ion-icon></ion-col>
   </ion-row>
   <ion-row *ngIf="!many">
       <ion-col class="col-grid-list" text-center (click)="selectMany('many')"><ion-icon name="ios-apps" class="btn-grid-list"></ion-icon></ion-col>
-      <ion-col class="col-grid-list" text-center (click)="selectMany('list')"><ion-icon color="green1" name="md-list" class="btn-grid-list"></ion-icon></ion-col>
+      <ion-col class="col-grid-list" text-center (click)="selectMany('list')"><ion-icon color="black" name="md-list" class="btn-grid-list"></ion-icon></ion-col>
   </ion-row>
   
     <ion-row class="padding" *ngIf="many">
@@ -138,7 +165,69 @@ publication
                 <!-- <img (click)="openMenuShare(publication.name, publication.photo)" class="btn-operation" src="assets/imgs/share.png"> -->
                 <ion-icon (click)="openMenuShare(publication.name, publication.photo)" class="btn-operation" name="share-alt"></ion-icon>
               </ion-col>
+
             </ion-row>                      
         </ion-card>
       </div>
+      </ion-list>
+<ion-list *ngSwitchCase="'buys'">
+<!-- a parti de este punto la pestaña de compras -->
+<ion-row *ngIf="many">
+      <ion-col class="col-grid-list" text-center (click)="selectMany('many')"><ion-icon color="black" name="ios-apps" class="btn-grid-list"></ion-icon></ion-col>
+      <ion-col class="col-grid-list" text-center (click)="selectMany('list')"><ion-icon name="md-list" class="btn-grid-list"></ion-icon></ion-col>
+  </ion-row>
+  <ion-row *ngIf="!many">
+      <ion-col class="col-grid-list" text-center (click)="selectMany('many')"><ion-icon name="ios-apps" class="btn-grid-list"></ion-icon></ion-col>
+      <ion-col class="col-grid-list" text-center (click)="selectMany('list')"><ion-icon color="black" name="md-list" class="btn-grid-list"></ion-icon></ion-col>
+  </ion-row>
+  
+    <ion-row class="padding" *ngIf="many">
+        <ion-col col-4 *ngFor="let publication of publications">
+            <ion-card card-background-page class="card-publication">
+                <img (click)="goTopublication(publication)" src="{{publication.photo}}">          
+            </ion-card>  
+        </ion-col>       
+    </ion-row>
+
+    <div *ngIf="!many" class="back-content">
+        <ion-card *ngFor="let publication of publications">
+            <ion-item>
+                <ion-avatar item-start>
+                  <img class="user-avatar" src="{{user.profilePicture}}">
+                </ion-avatar>
+              <ion-label class="username">{{publication.username}}</ion-label>
+            </ion-item>
+            <div>
+              <button  class = "btn-publication-image" (click)="goTopublication(publication)">
+                <img src="{{publication.photo}}" class="img-publication">
+              </button>
+            </div>          
+
+            <ion-card-content>
+              <ion-label class="precio">$ 99.999</ion-label>
+                <ion-label class="description">{{publication.name}}</ion-label>
+            </ion-card-content>         
+            <ion-row class="row-operations">
+              <ion-col col-1>
+              
+                <ion-icon *ngIf="!publication.liked" (click)="like(i)" class="btn-operation custom-icon" name="ios-heart-outline" alt=""></ion-icon>
+                 <ion-icon *ngIf="publication.liked" (click)="unlike(i)" class="btn-operation custom-icon" name="ios-heart" alt=""></ion-icon>
+              </ion-col>
+              <ion-col col-1>
+                
+                <ion-icon *ngIf="!publication.favorited" (click)="addFavorite(i)" class="btn-operation custom-icon-card" name="ios-cart-outline" alt=""></ion-icon>
+                <ion-icon *ngIf="publication.favorited" (click)="deleteFavorite(i)" class="btn-operation custom-icon-card" name="ios-cart" alt=""></ion-icon>
+              </ion-col>
+              <ion-col col-1>
+                
+                <ion-icon (click)="openMenuShare(publication.name, publication.photo)" class="btn-operation" name="share-alt"></ion-icon>
+              </ion-col>
+              
+            </ion-row>                      
+        </ion-card>
+      </div>
+
+
+ </ion-list> 
+    </div>
 </ion-content>

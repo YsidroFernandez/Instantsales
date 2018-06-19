@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar no-border-bottoom>
+    <ion-title>Informaciòn de interés</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="publicacion">
+        Publicación
+      </ion-segment-button>
+      <ion-segment-button value="vendedor">
+        Vendedor
+      </ion-segment-button>
+      <ion-segment-button value="preguntas">
+      Preguntas
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'publicacion'">
+        <ion-card>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-12>
+                  <ion-slides pager>
+                    <ion-slide *ngFor="let imagen of imagenes">
+                      <img [src]="imagen" class="slide-image"/>
+                    </ion-slide>
+                  </ion-slides>       
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-10>
+                  <h1>Nombre del Artículo: </h1>
+                  <h2 [innerHTML]="publicacion.title"></h2>
+                  <h1>Descripción: </h1>
+                  <p>{{publicacion.description}}</p>
+                  <h1 color="green">Precio: </h1>
+                  <h2 [innerHTML]="publicacion.precio"></h2>
+                  <h1>Existencia: </h1>
+                  <h2 [innerHTML]="publicacion.existencia"></h2> 
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+    </ion-list>
+    <ion-list *ngSwitchCase="'vendedor'">
+        <ion-card>
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="/assets/imgs/marty.jpeg">
+            </ion-avatar>
+              <h2>Ronaldo DeAsis</h2>
+              <p>November 5, 1955</p>
+          </ion-item>
+          <ion-card-content>
+            <p>
+              La vida es una sola por eso hay que aprovechar cada segundo de ella..!!
+            </p>
+          </ion-card-content>
+          <ion-row>
+            <ion-col>
+              <button ion-button color="primary" clear small icon-start>
+                <ion-icon name='thumbs-up'></ion-icon>
+                      12 Likes
+              </button>
+              <button ion-button color="primary" clear small icon-start>
+                <ion-icon name='text'></ion-icon>
+                  4 Comments
+              </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+              <ion-note>
+                11h ago
+              </ion-note>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+    </ion-list>
+    <ion-list *ngSwitchCase="'preguntas'">
+      <ion-card>
+        <ion-list>
+          <ion-label>Commet</ion-label>
+           <ion-item class="text-inputs">
+            <ion-textarea placeholder="Commet" maxlength=200 ></ion-textarea>
+          </ion-item>
+          <div class="centrado">
+            <button ion-button color="primary" round>Send</button>
+          </div>
+        </ion-list>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

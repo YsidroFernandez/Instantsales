@@ -15,6 +15,7 @@
 
 
 <ion-content fullscreen >
+  <button color="primary" class="button-signin" ion-button round (click)="goDescriptionPublication()"></button>
         <ion-card *ngFor="let publication of publications; let i = index">
             <ion-item (click)="goProfileUser(publication.userId._id)">
                 <ion-avatar item-start>
@@ -26,7 +27,7 @@
               
 
  <!-- nuevo codigo para slider -->
-<ion-slides pager>
+<ion-slides pager >
 
   <ion-slide style="background-color: white">
     <!-- <h2>Slide 1</h2> -->
@@ -47,25 +48,22 @@
  <!-- fin de nuevo codigo para slider -->
             </div>          
             <ion-card-content>
-                 <ion-label class="precio">BsS 99.999</ion-label>
+                 <ion-label class="precio">$ 99.999</ion-label>
                  <ion-label class="description">{{publication.name}}</ion-label>
             </ion-card-content>         
             <ion-row class="row-operations">
               <ion-col col-1>
-                <!-- <img *ngIf="publication.liked" (click)="unlike(i)" class="btn-operation" src="assets/imgs/like-action2.png" alt="">
-                <img *ngIf="!publication.liked" (click)="like(i)" class="btn-operation" src="assets/imgs/button_icon_black.png" alt=""> -->
-                 
-                <ion-icon *ngIf="!publication.liked" (click)="like(i)" class="btn-operation" name="ios-heart-outline" alt=""></ion-icon>
-                 <ion-icon *ngIf="publication.liked" (click)="unlike(i)" class="btn-operation" name="ios-heart" alt=""></ion-icon>
+              
+                <ion-icon *ngIf="!publication.liked" (click)="like(i)" class="btn-operation custom-icon" name="ios-heart-outline" alt=""></ion-icon>
+                 <ion-icon *ngIf="publication.liked" (click)="unlike(i)" class="btn-operation custom-icon" name="ios-heart" alt=""></ion-icon>
               </ion-col>
               <ion-col col-1>
-                <!-- <img *ngIf="!publication.favorited" (click)="addFavorite(i)" class="btn-operation" src="assets/imgs/favorite.png">
-                <img *ngIf="publication.favorited" (click)="deleteFavorite(i)" class="btn-operation" src="assets/imgs/favorite-action.png"> -->
-                <ion-icon *ngIf="!publication.favorited" (click)="addFavorite(i)" class="btn-operation" name="ios-cart-outline" alt=""></ion-icon>
-                <ion-icon *ngIf="publication.favorited" (click)="deleteFavorite(i)" class="btn-operation" name="ios-cart" alt=""></ion-icon>
+                
+                <ion-icon *ngIf="!publication.favorited" (click)="addFavorite(i)" class="btn-operation custom-icon-card" name="ios-cart-outline" alt=""></ion-icon>
+                <ion-icon *ngIf="publication.favorited" (click)="deleteFavorite(i)" class="btn-operation custom-icon-card" name="ios-cart" alt=""></ion-icon>
               </ion-col>
               <ion-col col-1>
-                <!-- <img (click)="openMenuShare(publication.name, publication.photo)" class="btn-operation" src="assets/imgs/share.png"> -->
+                
                 <ion-icon (click)="openMenuShare(publication.name, publication.photo)" class="btn-operation" name="share-alt"></ion-icon>
               </ion-col>
             </ion-row>                      
