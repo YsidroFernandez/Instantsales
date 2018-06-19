@@ -12,8 +12,8 @@ export class publicationProvider {
 
 
   //urlServer : string = 'intranet/';
-  urlServer : string = 'http://instantsales.us-3.evennode.com/api/';
-  //urlServer: String = 'http://localhost:3000/api/'
+  //urlServer : string = 'http://instantsales.us-3.evennode.com/api/';
+  urlServer: String = 'http://localhost:3000/api/'
 
   constructor(public http: HttpClient) {
     console.log('Hello publicationProvider Provider');
